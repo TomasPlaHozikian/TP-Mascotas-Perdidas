@@ -1,0 +1,24 @@
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+    background: rgb(255,254,226);
+    background: linear-gradient(90deg, rgba(255,254,226,1) 0%, rgba(255,255,255,1) 50%, rgba(255,254,226,1) 100%);
+}
+
+.logo{
+    width: 150px;
+    height: 75px;
+}
+
+.Button{
+    background-color: rgb(50, 8, 8);
+    border: 2px solid rgb(46, 29, 11);
+    color: white;
+    padding: 14px 15px;
+    margin: 0px 10px;
+    text-align: center;
+    text-decoration: none;
+    height: 20px;
+}

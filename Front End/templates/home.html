@@ -1,1 +1,33 @@
-<h1>test</h1>
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/reset.css') }}"> 
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}"> 
+</head>
+<body>
+
+<header>
+    <a class="logoClick" href="{{ url_for('index') }}"><img class="logo" src="{{ url_for('static', filename='/images/')}}"></a>
+    <div class="headerButtons">
+            <a class="Button" id="encontre" >Encontre una Mascota</a>
+            <a class="Button" id="busco" >Busco a mi mascota</a>
+            <a class="Button" id="centros" >Mostrar Centros</a>
+            <a class="Button" id="login" >Log In</a>
+    </div>
+</header>
+<main>
+    <div class="todo">
+    
+    {% block content %}
+      {# Template inserted #}
+    {% endblock %}
+
+    </div>
+</main>
+<footer>
+
+</footer>
+
+</body>
+
+</html>
