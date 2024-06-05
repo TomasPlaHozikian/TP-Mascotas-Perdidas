@@ -1,0 +1,57 @@
+body {
+    background-image: url('/static/images/background.jpg');
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.box {
+    padding: 1px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+
+.title {
+    font-weight: bold;
+    margin-bottom: 
+    10px;
+}
+
+.title:hover {
+    color: lightgrey;
+    cursor: pointer;
+}
+
+.buttons {
+    position: absolute;
+    display: none;
+}
+
+.buttons.visible {
+    visibility: visible;
+    opacity: 1;
+}
+
+.button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 100px;
+    height: 40px;
+    text-align: center; 
+}
+
+#head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    font-family: Arial, sans-serif;
+    font-size: 1.5em;
+}

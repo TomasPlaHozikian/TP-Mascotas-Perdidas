@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/style.css')}}">
+    <script src="{{ url_for('static', filename='/js/scripts.js')}}"></script>
+    <title>TP Mascotas Perdidas</title>
+</head>
+<body>
+    <div id="head">
+    <div class="box">
+        <h3 class="title" onclick="toggleButtons(this)">Mascotas</h2>
+        <div class="buttons">
+            <button class="button" onclick="window.location.href='register.html'">Registrar</button>
+            <button class="button" onclick="window.location.href='search.html'">Buscar</button>
+        </div>
+    </div>
+
+    <div class="box">
+        <h3 class="title" onclick="toggleButtons(this)">Centros</h2>
+        <div class="buttons">
+            <button class="button" onclick="window.location.href='registerc.html'">Registrar</button>
+            <button class="button" onclick="window.location.href='searchc.html'">Buscar</button>
+        </div>
+    </div>
+
+    <div class="box">
+        <h3 class="title" onclick="toggleButtons(this)">Usuario</h2>
+        <div class="buttons">
+            <button class="button" onclick="window.location.href='login.html'">Log In</button>
+            <button class="button" onclick="window.location.href='registeru.html'">Registrar</button>
+        </div>
+    </div>
+    </div>
+
+
+    <div id="lista">
+        {% for item in items %}
+            <p>{{ item }}</p>
+        {% endfor %}
+    </div>
+
+
+</body>
+</html>
