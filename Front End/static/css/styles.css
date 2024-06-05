@@ -41,13 +41,14 @@ header{
 }
 
 .card {
-    position: relative;
+    display:flex;
+    justify-content:space-between;
     background: rgb(255, 255, 255);
     border: 2px solid rgb(242, 247, 199);
     border-width: 10px;    
     border-radius: 10px;
     margin: 10px;
-    padding: 10px 20px 10px;
+    padding: 5px 20px 5px;
 }
 
 .imagenPerro
@@ -60,11 +61,17 @@ header{
     display: block;
 }
 
-.mapa
+.imagenMapa
 {
     width: 300px;
     height: 300px;
     padding: 5px;
-    margin-left: 10px;
+    margin: 5px 20px 5px;
     display: block;
+}
+
+.textoCarta{
+    margin: 30px;
+
+
 }
