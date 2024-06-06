@@ -203,31 +203,30 @@ h1 {
 }
 
 .foto-perfil {
-    max-width: 200px; /* Ajusta el ancho máximo de la foto de perfil */
-    margin: 0 auto; /* Centra la foto de perfil horizontalmente */
-    text-align: center; /* Alinea la imagen al centro */
+    max-width: 200px; 
+    margin: 0 auto; 
+    text-align: center; 
 }
 
 .foto-perfil img {
-    max-width: 100%; /* La imagen de perfil no superará el ancho máximo definido */
-    border-radius: 50%; /* Para hacer la imagen de perfil redonda */
-    border: 4px solid #fff; /* Añade un borde blanco a la imagen de perfil */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Añade una sombra ligera a la imagen de perfil */
+    max-width: 100%; 
+    border-radius: 50%; 
+    border: 4px solid #fff; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .info-perfil {
-    max-width: 600px; /* Establece un ancho máximo para la información del perfil */
-    margin: 20px auto; /* Centra la información del perfil horizontalmente */
-    background-color: #fff; /* Color de fondo blanco */
-    padding: 20px; /* Espaciado interno */
-    border-radius: 8px; /* Borde redondeado */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    max-width: 600px; 
+    margin: 20px auto; 
+    background-color: #fff; 
+    padding: 20px; 
+    border-radius: 8px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
 }
 
 .info-perfil label {
-    font-weight: bold; /* Texto en negrita para las etiquetas */
+    font-weight: bold; 
 }
-
 .info-perfil p {
-    margin: 10px 0; /* Espaciado entre los párrafos */
+    margin: 10px 0; 
 }
