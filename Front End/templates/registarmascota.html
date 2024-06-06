@@ -2,4 +2,23 @@
 
 {% block content %}
 
+<div class="iniciar_sesion">
+    <form action="" class="form_iniciar_sesion">
+        <div>
+            <label for="fnombre">Nombre</label>
+            <input type="text" name="fname" id="fnombre">
+
+            <label for="especie">Especie</label>
+            <input type="text" name="fespecie" id="especie">
+
+            <label for="raza">Raza</label>
+            <input type="text" name="fraza" id="raza">
+
+            <label for="direccion">Direccion</label>
+            <input type="text" name="fdireccion" id="direccion">
+        </div>
+        <input class="boton" type="button" value="Buscar">
+    </form>
+</div>
+
 {% endblock %}

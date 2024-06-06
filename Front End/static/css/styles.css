@@ -137,12 +137,9 @@ footer>p{
     align-items: center;
     justify-content: center;
     width: 100%;
-    margin-top: 10%;
-}
-
-.registrar {
     margin-top: 5%;
 }
+
 
 .form_iniciar_sesion {
     display: flex;

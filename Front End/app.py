@@ -30,5 +30,9 @@ def perfilajeno():
 def registrar_centro():
     return render_template('registrarcentro.html')
 
+@app.route('/registrar_mascota')
+def registrar_mascota():
+    return render_template('registarmascota.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
