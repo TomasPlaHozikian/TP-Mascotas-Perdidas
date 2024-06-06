@@ -22,5 +22,9 @@ def registrar_usuario():
 def perfil():
     return render_template('perfilpropio.html')
 
+@app.route('/registar_centro')
+def registrar_centro():
+    return render_template('registrarcentro.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
