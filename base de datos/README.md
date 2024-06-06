@@ -8,3 +8,5 @@ para conectar con azure:
  usar localhost como server name
  username root
  clave test
+
+para luego conectar a python se usa el codigo en app.py
