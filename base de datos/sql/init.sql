@@ -1,7 +1,9 @@
 CREATE TABLE IF NOT EXISTS usuarios (
     nombre VARCHAR(50),
     apellido VARCHAR(50),
-    numero INT
+    mail VARCHAR(50),
+    numero INT,
+    contrasena VARCHAR(50)
 );
 
 CREATE TABLE IF NOT EXISTS animales (
@@ -16,8 +18,8 @@ CREATE TABLE IF NOT EXISTS centros (
     direccion VARCHAR(50)
 );
 
-INSERT INTO usuarios (nombre, apellido, numero) VALUES ('Juan', 'Perez', 123456789);
-INSERT INTO usuarios (nombre, apellido, numero) VALUES ('Maria', 'Gonzalez', 987654321);
+INSERT INTO usuarios (nombre, apellido, mail, numero, contrasena) VALUES ('Juan', 'Perez', 'juan@mail.com',123456789, 'hola12345');
+INSERT INTO usuarios (nombre, apellido, mail, numero, contrasena) VALUES ('Maria', 'Gonzalez', 'maria@mail.com',987654321, 'hola54321');
 
 INSERT INTO animales (nombre, especie, raza, ubicacion) VALUES ('Firulais', 'Perro', 'Labrador', 'Calle 123');
 INSERT INTO animales (nombre, especie, raza, ubicacion) VALUES ('Mishi', 'Gato', 'Siames', 'Calle 456');
