@@ -2,8 +2,9 @@
 <html>
 
 <head>
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/reset.css') }}">
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/reset.css') }}"> 
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+
 </head>
 
 <body>
@@ -12,11 +13,11 @@
     <a class="logoClick" href="{{ url_for('home') }}"><img class="logo"
         src="{{ url_for('static', filename='/images/logo.png')}}"></a>
     <div class="headerButtons">
-      <a class="Button" id="encontre">Encontré una Mascota</a>
-      <a class="Button" id="buscar" href="busqueda">Busco a mi mascota</a>
-      <a class="Button" id="centros">Mostrar Centros</a>
-      <a class="Button" id="centros">Registrar Centro</a>
-      <a class="Button" id="login">Log In</a>
+            <a class="Button" id="encontre" >Encontré una Mascota</a>
+            <a class="Button" id="buscar" href="busqueda" >Busco a mi mascota</a>
+            <a class="Button" id="centros" >Mostrar Centros</a>
+            <a class="Button" id="centros" >Registrar Centro</a>
+            <a class="Button" id="login" href="{{ url_for('iniciar_sesion') }}">Log In</a>
     </div>
   </header>
   <main>

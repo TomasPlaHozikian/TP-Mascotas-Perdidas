@@ -68,7 +68,6 @@ header{
     margin: 5px 20px 5px;
     display: block;
 }
-
 .textoCarta{
     margin: 30px;
 }
@@ -120,4 +119,58 @@ footer hr{
 
 footer>p{
   opacity: 0.5;
+}
+
+/* inicio sesion */
+
+.iniciar_sesion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 10%;
+}
+
+.registrar {
+    margin-top: 5%;
+}
+
+.form_iniciar_sesion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    background-color: #4CAF50;
+    border-radius: 32px;
+    width: 200px;
+}
+
+.form_iniciar_sesion div {
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+.form_iniciar_sesion div label {
+    margin-left: 8px;
+}
+
+.form_iniciar_sesion div input {
+    margin: 8px;
+}
+
+.form_iniciar_sesion .boton {
+    padding: 8px;
+    margin-top: 16px;
+    background-color: lightgreen;
+    border: 0;
+    border-radius: 8px;
+    width: auto;
+}
+
+.form_iniciar_sesion a {
+    margin-top: 16px;
+    text-decoration: none;
+    color: blue;
 }

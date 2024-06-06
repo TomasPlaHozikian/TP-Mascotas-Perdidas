@@ -2,4 +2,27 @@
 
 {% block content %}
 
+<div class="iniciar_sesion registrar">
+    <form action="" class="form_iniciar_sesion">
+        <div>
+            <label for="firstname">Nombre</label>
+            <input type="text" name="fname" id="firstname">
+
+            <label for="lastname">Apellido</label>
+            <input type="text" name="lname" id="lastname">
+
+            <label for="mail">Correo electronico</label>
+            <input type="text" name="email" id="mail">
+
+            <label for="phone">Numero de telefono</label>
+            <input type="text" name="phone" id="phone">
+
+            <label for="password">Contraseña</label>
+            <input type="password" name="password" id="password">
+        </div>
+        <input class="boton" type="button" value="Registrarte">
+    </form>
+</div>
+
+
 {% endblock %}

@@ -2,4 +2,19 @@
 
 {% block content %}
 
+
+<div class="iniciar_sesion">
+    <form action="" class="form_iniciar_sesion">
+        <div>
+            <label for="username">Nombre de usuario</label>
+            <input type="text" name="user" id="username">
+            <label for="password">Contraseña</label>
+            <input type="password" name="password" id="password">
+        </div>
+        <input class="boton" type="button" value="Iniciar sesión">
+        <a href="{{ url_for('registrar_usuario') }}">Crear cuenta nueva</a>
+    </form>
+</div>
+
+
 {% endblock %}
