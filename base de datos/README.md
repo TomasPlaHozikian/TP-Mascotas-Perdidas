@@ -1,6 +1,6 @@
 abrir carpeta docker en terminal
 
-ejecutar docker-compose up--build -d
+ejecutar docker-compose up --build -d
 
 para conectar con azure:
 
