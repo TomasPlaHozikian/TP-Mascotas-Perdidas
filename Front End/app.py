@@ -26,5 +26,9 @@ def perfil():
 def perfilajeno():
     return render_template('perfilajeno.html')
 
+@app.route('/registar_centro')
+def registrar_centro():
+    return render_template('registrarcentro.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
