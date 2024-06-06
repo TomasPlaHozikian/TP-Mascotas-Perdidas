@@ -70,6 +70,8 @@ def get_usuarios():
         return str(e)
 
 
+#luego se utilizara fetch mediante javascript para recibir datos del html en formato json,
+#se añadira un event listener al submit del form que recibira los datos y los parseara a json.
 @app.route('/animalescargar', methods=['POST'])
 def cargar_animal():
     try:
