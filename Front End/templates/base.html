@@ -1,33 +1,52 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/reset.css') }}"> 
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}"> 
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/reset.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
+
 <body>
 
-<header>
-    <a class="logoClick" href="{{ url_for('home') }}"><img class="logo" src="{{ url_for('static', filename='/images/logo.png')}}"></a>
+  <header>
+    <a class="logoClick" href="{{ url_for('home') }}"><img class="logo"
+        src="{{ url_for('static', filename='/images/logo.png')}}"></a>
     <div class="headerButtons">
-            <a class="Button" id="encontre" >Encontre una Mascota</a>
-            <a class="Button" id="buscar" href="busqueda" >Busco a mi mascota</a>
-            <a class="Button" id="centros" >Mostrar Centros</a>
-            <a class="Button" id="centros" >Registrar Centro</a>
-            <a class="Button" id="login" >Log In</a>
+      <a class="Button" id="encontre">Encontré una Mascota</a>
+      <a class="Button" id="buscar" href="busqueda">Busco a mi mascota</a>
+      <a class="Button" id="centros">Mostrar Centros</a>
+      <a class="Button" id="centros">Registrar Centro</a>
+      <a class="Button" id="login">Log In</a>
     </div>
-</header>
-<main>
+  </header>
+  <main>
     <div class="todo">
-    
-    {% block content %}
+
+      {% block content %}
       {# Template inserted #}
-    {% endblock %}
+      {% endblock %}
 
     </div>
-</main>
-<footer>
-
-</footer>
+  </main>
+  <footer>
+    <div class="footerContent">
+      <a href="{{ url_for('home') }}"><img class="logoFooter" src="{{ url_for('static', filename='/images/logo.png')}}"></a>
+      <ul>
+        <li><a href="#">Encontré una Mascota</a></li>
+        <li><a href="#">Busco a mi Mascota</a></li>
+        <li><a href="#">Mostrar Centros</a></li>
+        <li><a href="#">Registrar Centros</a></li>
+      </ul>
+      <ul>
+        <li><a href="#">Quienes somos</a></li>
+        <li><a href="#">Contacto</a></li>
+        <li><a href="#">Preguntas Frecuentes</a></li>
+        <li><a href="#">Trabaje con Nosotros</a></li>
+      </ul>
+    </div>
+    <hr>
+    <p>Copyright © 2024. All rights reserved.</p>
+  </footer>
 
 </body>
 
