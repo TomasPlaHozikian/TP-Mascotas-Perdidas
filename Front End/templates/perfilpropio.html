@@ -2,4 +2,21 @@
 
 {% block content %}
 
+<h1>Mi Perfil</h1>
+
+    <div class="foto-perfil">
+        <img src="{{url_for('static',filename = 'images/perfil.png')}}">
+    </div>
+    
+    <div class="info-perfil">
+        <label for="nombre">Nombre y Apellido:</label>
+        <p id="nombre">{{nombre}}</p>
+   
+        <label for="email">Correo Electrónico:</label>
+        <p id="email">{{email}}</p>
+    
+        <label for="telefono">Teléfono:</label>
+        <p id="telefono">{{telefono}}</p>
+    </div>
+
 {% endblock %}
