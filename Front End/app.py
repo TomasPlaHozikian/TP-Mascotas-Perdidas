@@ -18,9 +18,13 @@ def iniciar_sesion():
 def registrar_usuario():
     return render_template('registrarusuario.html')
 
-@app.route('/perfil')
+@app.route('/perfilpropio')
 def perfil():
     return render_template('perfilpropio.html')
+
+@app.route('/perfilajeno')
+def perfilajeno():
+    return render_template('perfilajeno.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

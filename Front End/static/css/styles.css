@@ -230,3 +230,51 @@ h1 {
 .info-perfil p {
     margin: 10px 0; 
 }
+
+/*PERFIL AJENO*/
+
+.PA
+{
+    display: flex;
+    justify-content: space-between;
+    max-width: 960px;
+    margin: 0 auto;
+    flex: 0 0 auto;
+
+}
+.perfil-ajeno {
+    
+    text-align:center;
+    margin: 20px auto;
+    padding: 20px;
+    width: 500px;
+    border: 2px solid #22520b;
+    border-radius: 10px;
+    font-size: 24px;
+    margin-bottom: 50px;
+    background-color: #4CAF50;
+    margin-left: auto;
+}
+
+.imagen-ajeno img {
+    flex: 1;
+    width: 300px;
+    height: 300px;
+    border-radius: 35%;
+    margin-bottom: 20px;
+    margin-left: 40px;
+
+}
+
+.perfil-ajeno h1
+{
+    font-size: xx-large;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+.perfil-ajeno p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 10px;
+    text-align: right;
+}
