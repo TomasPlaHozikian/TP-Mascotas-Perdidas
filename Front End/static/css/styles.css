@@ -19,6 +19,13 @@ header{
     height: 75px;
 }
 
+.titulopagina img
+{
+    max-width: 150px;
+    height: auto;
+    margin-right: 600px;
+}
+
 .Button{
     color: white;
     padding: 14px 15px;

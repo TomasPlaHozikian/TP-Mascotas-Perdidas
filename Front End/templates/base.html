@@ -12,7 +12,10 @@
   <header>
     <a class="logoClick" href="{{ url_for('home') }}"><img class="logo"
         src="{{ url_for('static', filename='/images/logo.png')}}"></a>
-    <div class="headerButtons">
+    <div class="titulopagina">
+      <img src="{{url_for('static', filename = 'images/titulo1.png')}}">
+    </div>
+        <div class="headerButtons">
             <a class="Button" id="buscar" href="busqueda" >Busco a mi mascota</a>
             <a class="Button" id="centros" >Mostrar Centros</a>
             <a class="Button" id="centros" href="{{url_for('registrar_centro')}}">Registrar Centro</a>
