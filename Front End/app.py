@@ -37,7 +37,7 @@ def registrar_mascota():
     return render_template('registarmascota.html')
 
 @app.route ('/vercentro')
-def vercentro():
+def ver_centro():
     return render_template('mostrarcentro.html')
 
 if __name__ == '__main__':
