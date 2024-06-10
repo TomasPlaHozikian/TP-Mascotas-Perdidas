@@ -14,9 +14,61 @@ def set_connection():
     return connection
 """
 
+
+
 @app.route('/')
 def index():
     return render_template('index.html')
+
+refugio = [
+    {'id':1, 'name': 'idoboga'},
+    {'id':2, 'name': 'boca'}
+            ]
+
+@app.route('/refugios', methods=['GET','POST'])
+def refugios():
+    if request.method == 'GET':
+        try:
+            conn = set_connection()
+            cursor = conn.cursor()
+            cursor.execute('SELECT * FROM centros')
+            result = cursor.fetchall()
+            conn.close()
+            return jsonify(result)
+        except SQLAlchemyError as e:
+            return str(e)
+    elif request.method == 'POST':
+        try:
+            conn = set_connection()
+            cursor = conn.cursor()
+        # conseguir valores mediante request
+            nuevo_refugio = request.get_json()
+            direccion = nuevo_refugio['direccion']
+            nombre = nuevo_refugio['nombre']
+        # insertar valores en la tabla
+            cursor.execute(f"INSERT INTO centros (direccion,nombre) VALUES ('{direccion}', '{nombre}')")
+            conn.commit()
+            conn.close()
+            return jsonify({'message': 'Refugio creado correctamente'})
+        except SQLAlchemyError as e:
+            return str(e)
+
+
+
+@app.route('/borrar_refugio/<nombre>', methods=['DELETE'])
+def borrar_refugio(nombre):
+    try:
+        conn = set_connection()
+        cursor = conn.cursor()
+        # eliminar valores en la tabla
+        cursor.execute(f"DELETE FROM centros WHERE nombre='{nombre}'")
+        conn.commit()
+        conn.close()
+        return jsonify({'message': 'Refugio eliminado correctamente'})
+    except SQLAlchemyError as e:
+        return str(e)
+
+
 
 
 @app.route('/cargaranimal')
