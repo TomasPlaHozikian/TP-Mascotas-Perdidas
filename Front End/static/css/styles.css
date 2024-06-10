@@ -156,7 +156,7 @@ footer>p{
     padding: 40px;
     background-color: #4CAF50;
     border-radius: 32px;
-    width: 200px;
+    max-width: 300px; 
 }
 
 .form_iniciar_sesion div {
@@ -169,8 +169,28 @@ footer>p{
     margin-left: 8px;
 }
 
-.form_iniciar_sesion div input {
+.form_iniciar_sesion div input:not([type="file"]) {
     margin: 8px;
+    width: 80%; 
+}
+
+.form_iniciar_sesion .subir_imagen {
+    margin: 8px;
+}
+
+.elegir_archivo {
+    display: none; 
+}
+
+.subir_archivo {
+    padding: 8px;
+    background-color: lightgreen;
+    border: 0;
+    border-radius: 8px;
+    width: 75%; 
+    cursor: pointer;
+    text-align: center;
+    color: rgb(9, 8, 8);
 }
 
 .form_iniciar_sesion .boton {
@@ -179,7 +199,8 @@ footer>p{
     background-color: lightgreen;
     border: 0;
     border-radius: 8px;
-    width: auto;
+    width: 100%;
+    cursor: pointer;
 }
 
 .form_iniciar_sesion a {
@@ -187,6 +208,7 @@ footer>p{
     text-decoration: none;
     color: blue;
 }
+
 
 /*PERFIL PROPIO*/
 
