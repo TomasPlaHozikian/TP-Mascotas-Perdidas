@@ -282,3 +282,40 @@ h1 {
     margin-bottom: 10px;
     text-align: right;
 }
+
+/*VER CENTRO*/
+
+.centro {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    width: 300px;
+}
+
+.titulocentro h1
+{
+    font-family: Comic sans-serif;
+}
+
+.centro
+{
+    align-items: center;
+    background-color: rgba(76, 175, 80, 0.5); 
+}
+
+.centro  {
+    margin-top: 0;
+
+}
+.footer {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.imagencentro img
+{
+    max-width: 100%; 
+    height: auto; 
+    margin-bottom: 10px;
+}

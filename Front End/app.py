@@ -36,5 +36,9 @@ def registrar_centro():
 def registrar_mascota():
     return render_template('registarmascota.html')
 
+@app.route ('/vercentro')
+def vercentro():
+    return render_template('mostrarcentro.html')
+
 if __name__ == '__main__':
     app.run(debug=True, host='127.0.0.1', port=5001)

@@ -2,4 +2,32 @@
 
 {% block content %}
 
+    <div class="titulocentro">
+        <h1>Sitios de Acogida de Animales Perdidos</h1>
+    </div>
+    
+    <div style="display:flex; justify-content: center;" >
+
+    <div class="centro">
+        <h2>Nombre del refugio:{{nombrecentro}}</h2>
+        <p><strong>Dirección:</strong> {{direccion}}</p>
+        <p><strong>Teléfono:</strong> {{telefono}}</p>
+        <p><strong>Correo Electrónico:</strong> {{email}}</p>
+        <br>
+        <div class="imagencentro">
+            <img src="{{url_for('static', filename='images/centro.png')}}"> 
+        </div>
+    </div>
+    <br>
+    <div class="centro">
+        <h2>Nombre del refugio:{{nombrecentro}}</h2>
+        <p><strong>Dirección:</strong>{{direccion}}</p>
+        <p><strong>Teléfono:</strong> {{telefono}}</p>
+        <p><strong>Correo Electrónico:</strong> {{email}}</p>
+        <br>
+        <div class="imagencentro">
+            <img src="{{url_for('static', filename='images/centro2.png')}}"> 
+        </div>
+    </div>
+
 {% endblock %}
