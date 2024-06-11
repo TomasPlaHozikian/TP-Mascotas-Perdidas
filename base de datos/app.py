@@ -97,7 +97,7 @@ def show_animales():
     return result
 
 
-@app.route('/animales', methods=['GET'])
+@app.route('/getanimales', methods=['GET'])
 def get_animales():
     try:
         conn = set_connection()
@@ -109,7 +109,7 @@ def get_animales():
     except SQLAlchemyError as e:
         return str(e)
     
-@app.route('/usuarios', methods=['GET'])
+@app.route('/getusuarios', methods=['GET'])
 def get_usuarios():
     try:
         conn = set_connection()
@@ -166,6 +166,42 @@ def cargar_usuario():
 
 
 
+@app.route('/animales', methods=['GET','POST'])
+def animales():
+    if request.method == 'GET':
+        try:
+            conn = set_connection()
+            cursor = conn.cursor()
+            cursor.execute('SELECT * FROM animales')
+            result = cursor.fetchall()
+            conn.close()
+            return jsonify(result)
+        except SQLAlchemyError as e:
+            return str(e)
+    elif request.method == 'POST':
+        try:
+            conn = set_connection()
+            cursor = conn.cursor()
+        # conseguir valores mediante request
+            nuevo_animal = request.get_json()
+            nombre = nuevo_animal['nombre']
+            especie = nuevo_animal['especie']
+            raza = nuevo_animal['raza']
+            provincia = nuevo_animal['provincia']
+            municipio = nuevo_animal['municipio']
+            localidad = nuevo_animal['localidad']
+            calle = nuevo_animal['calle']
+            numero = nuevo_animal['numero']
+            foto = nuevo_animal['foto']
+        # insertar valores en la tabla
+        #{ "direccion" : "calzada", "nombre": "polideportivo" }
+        #{"nombre": "Jorge", "especie" : "Gato", "raza" : "Calle", "provincia": "Buenos Aires", "municipio": "Lanus", "localidad": "Valentin Alsina", "calle": "Paraguay", "numero": "3254", "foto": "https://www.warrenphotographic.co.uk/photography/sqrs/17693.jpg"}
+            cursor.execute(f"INSERT INTO animales (nombre, especie, raza, provincia, municipio, localidad, calle, numero, foto) VALUES ('{nombre}', '{especie}', '{raza}', '{provincia}', '{municipio}', '{localidad}', '{calle}', '{numero}', '{foto}')")
+            conn.commit()
+            conn.close()
+            return jsonify({'message': 'animal añadido correctamente'})
+        except SQLAlchemyError as e:
+            return str(e)
 
 if __name__ == '__main__':
     app.run()
