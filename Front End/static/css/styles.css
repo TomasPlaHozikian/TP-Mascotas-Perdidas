@@ -341,3 +341,9 @@ h1 {
     height: auto; 
     margin-bottom: 10px;
 }
+
+.mapouter .gmap_canvas
+{
+    width: 100 px;
+    height: 100 px;
+}
