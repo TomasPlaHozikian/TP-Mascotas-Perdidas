@@ -1,4 +1,5 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
+import requests
 
 app = Flask(__name__)
 
@@ -42,8 +43,10 @@ def ver_centro():
 
 @app.route ('/ver_animales')
 def ver_animales():
-    return render_template('/mostraranimales.html')
+    response = requests.get('http://127.0.0.1:5001/animales')
+    data = response.json()
+    return render_template('/mostraranimales.html', data = data)
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='127.0.0.1', port=5001)
+    app.run(debug=True, host='127.0.0.1', port=5000)
