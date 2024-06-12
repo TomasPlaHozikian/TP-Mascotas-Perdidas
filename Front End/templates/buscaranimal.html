@@ -8,17 +8,28 @@
     </div>
     <br>
     <form action="" class="form_iniciar_sesion">
+    <form action="/resultado" class="form_iniciar_sesion" method="POST">
         <div>
-            <label for="firstname">Nombre</label>
-            <input type="text" name="fname" id="fnombre">
+            <label for="nombre">Nombre</label>
+            <input type="text" name="fnombre" id="fnombre">
 
-            <label for="lastname">Especie</label>
+            <label for="especie">Especie</label>
             <input type="text" name="fespecie" id="especie">
 
-            <label for="mail">Raza</label>
+            <label for="raza">Raza</label>
             <input type="text" name="fraza" id="raza">
+
+            <label for="provincia">Provincia</label>
+            <input type="text" name="fprovincia" id="provincia">
+
+            <label for="municipio">Municipio</label>
+            <input type="text" name="fmunicipio" id="municipio">
+
+            <label for="localidad">Localidad</label>
+            <input type="text" name="flocalidad" id="localidad">
+
         </div>
-        <input class="boton" type="button" value="Buscar">
+        <input class="boton" type="submit" value="Buscar">
     </form>
 </div>
 
