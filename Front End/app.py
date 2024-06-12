@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify, redirect, url_for
+
 import requests
 
 app = Flask(__name__)
@@ -22,6 +23,24 @@ def iniciar_sesion():
 @app.route('/registrar_usuario')
 def registrar_usuario():
     return render_template('registrarusuario.html')
+
+@app.route('/registrar', methods=["GET", "POST"])
+def iniciar_sesion():
+    if request.method == "POST":
+        nombre = request.form["fname"]
+        apellido = request.form["lname"]
+        email = request.form["email"]
+        telefono = request.form["phone"]
+        password = request.form["password"]
+        payload = {"fname": nombre, "lname": apellido, "email": email, "phone": telefono, "password": password }
+        NuevoUsuario = requests.post('http://localhost:5000/registrarUsuario', data=payload)
+        print(NuevoUsuario)
+        if NuevoUsuario["id"] == 1:
+            return render_template('home.html', nombre=nombre)
+        else:
+            return redirect(url_for('registrar'))
+    else:
+        return render_template('iniciosesion.html')
 
 @app.route('/perfilpropio')
 def perfil():
