@@ -35,11 +35,12 @@ def refugios():
                     'id': refugio[0],
                     'nombre': refugio[1],
                     'numero_de_telefono': refugio[2],
-                    'provincia': refugio[3],
-                    'municipio': refugio[4],
-                    'localidad': refugio[5],
-                    'calle': refugio[6],
-                    'numero_de_calle': refugio[7]
+                    'email': refugio[3],
+                    'provincia': refugio[4],
+                    'municipio': refugio[5],
+                    'localidad': refugio[6],
+                    'calle': refugio[7],
+                    'numero_de_calle': refugio[8]
                 })
             return jsonify(refugios)
         except SQLAlchemyError as e:
@@ -50,16 +51,16 @@ def refugios():
             cursor = conn.cursor()
         # conseguir valores mediante request
             nuevo_refugio = request.get_json()
-            id = nuevo_refugio['id']
             nombre = nuevo_refugio['nombre']
             numero_de_telefono = nuevo_refugio['numero_de_telefono']
+            email = nuevo_refugio['email']
             provincia = nuevo_refugio['provincia']
             municipio = nuevo_refugio['municipio']
             localidad = nuevo_refugio['localidad']
             calle = nuevo_refugio['calle']
             numero_de_calle = nuevo_refugio['numero_de_calle']
         # insertar valores en la tabla
-            cursor.execute(f"INSERT INTO centros (nombre, numero_de_telefono, provincia, municipio, localidad, calle, numero_de_calle) VALUES ('{nombre}', {numero_de_telefono}, '{provincia}', '{municipio}', '{localidad}', '{calle}', {numero_de_calle})")
+            cursor.execute(f"INSERT INTO centros (nombre, numero_de_telefono, email, provincia, municipio, localidad, calle, numero_de_calle) VALUES ('{nombre}', {numero_de_telefono}, '{email}', '{provincia}', '{municipio}', '{localidad}', '{calle}', {numero_de_calle})")
             conn.commit()
             conn.close()
             return jsonify({'message': 'Refugio creado correctamente'})

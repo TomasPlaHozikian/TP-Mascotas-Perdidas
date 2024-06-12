@@ -22,6 +22,7 @@ CREATE TABLE IF NOT EXISTS centros (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(50),
     numero_de_telefono INT,
+    email VARCHAR(50),
     provincia VARCHAR(50),
     municipio VARCHAR(50),
     localidad VARCHAR(50),
@@ -36,7 +37,13 @@ INSERT INTO animales (nombre, especie, raza, provincia, municipio, localidad, ca
 INSERT INTO animales (nombre, especie, raza, provincia, municipio, localidad, calle, numero, foto) VALUES ('Mishi', 'Gato', 'Siames', 'Buenos Aires', 'Lanus', 'Remedios De Escalda', 'Lugones', 200, 'https://cdn0.soyungato.com/es/razas/0/2/0/gato-siames_20_9_150_square.jpg');
 INSERT INTO animales (nombre, especie, raza, provincia, municipio, localidad, calle, numero, foto) VALUES ('Jorge', 'Gato', 'Calle', 'Buenos Aires', 'Lanus', 'Valentin Alsina', 'Paraguay', 4000, 'https://www.warrenphotographic.co.uk/photography/sqrs/17693.jpg');
 
-INSERT INTO centros (nombre, numero_de_telefono, provincia, municipio, localidad, calle, numero_de_calle) VALUES ('Centro de adopcion de animales', 11111111, 'Buenos Aires', 'Lanus', 'Lanus', 'Ituzaingo', 1282);
+INSERT INTO centros (nombre, numero_de_telefono, email, provincia, municipio, localidad, calle, numero_de_calle) VALUES ('Centro de adopcion de animales', 11111111, 'centro1@gmail.com', 'Buenos Aires', 'Lanus', 'Lanus', 'Ituzaingo', 1282);
 
-INSERT INTO centros (nombre, numero_de_telefono, provincia, municipio, localidad, calle, numero_de_calle) VALUES ('Centro de adopcion de animales 2', 11111111, 'Buenos Aires', 'Almirante Brown', 'Rafael Calzada', 'AV San Martin', 1562);
+INSERT INTO centros (nombre, numero_de_telefono, email, provincia, municipio, localidad, calle, numero_de_calle) VALUES ('Centro de adopcion de animales 2', 11111111, 'centro2@gmail.com', 'Buenos Aires', 'Almirante Brown', 'Rafael Calzada', 'AV San Martin', 1562);
+
+INSERT INTO centros (nombre, numero_de_telefono, email, provincia, municipio, localidad, calle, numero_de_calle) VALUES ('Centro de adopcion de animales 3', 11111111, 'centro3@gmail.com', 'Buenos Aires', 'CABA', 'CABA', 'Av. Rivadavia', 1300);
+
+INSERT INTO centros (nombre, numero_de_telefono, email, provincia, municipio, localidad, calle, numero_de_calle) VALUES ('Centro de adopcion de animales 4', 11111111, 'centro4@gmail.com', 'Buenos Aires', 'CABA', 'CABA', 'Av. Costanera Sur', 700);
+
+INSERT INTO centros (nombre, numero_de_telefono, email, provincia, municipio, localidad, calle, numero_de_calle) VALUES ('Centro de adopcion de animales 5', 11111111, 'centro5@gmail.com', 'Buenos Aires', 'CABA', 'CABA', 'Av. Callao', 1234);
 
