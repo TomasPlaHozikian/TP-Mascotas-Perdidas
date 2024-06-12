@@ -212,6 +212,8 @@ def animales():
                 query += f" AND provincia='{provincia}'"
             if municipio:
                 query += f" AND municipio='{municipio}'"
+            if localidad:
+                query += f" AND localidad='{localidad}'"
             
             cursor.execute(query)
             result = cursor.fetchall()
