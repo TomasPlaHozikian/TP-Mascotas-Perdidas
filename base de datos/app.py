@@ -126,13 +126,15 @@ def get_animales():
     except SQLAlchemyError as e:
         return str(e)
     
-@app.route('/getusuarios', methods=['GET'])
+@app.route('/usuarios', methods=['GET'])
 def get_usuarios():
     try:
         conn = set_connection()
         cursor = conn.cursor()
         cursor.execute('SELECT * FROM usuarios')
-        result = cursor.fetchall()
+        rows = cursor.fetchall()
+        column_names = [desc[0] for desc in cursor.description]
+        result = [dict(zip(column_names, row)) for row in rows]
         conn.close()
         return jsonify(result)
     except SQLAlchemyError as e:
