@@ -355,3 +355,18 @@ h1 {
     width: 100 px;
     height: 100 px;
 }
+
+.Info 
+{
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgb(76, 175, 79);
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(87, 211, 66, 0.1);
+    color:#ffffff ;
+}
+
+.Info ul{
+    padding-left: 20px;
+}
