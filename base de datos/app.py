@@ -29,7 +29,19 @@ def refugios():
             cursor.execute('SELECT * FROM centros')
             result = cursor.fetchall()
             conn.close()
-            return jsonify(result)
+            refugios = []
+            for refugio in result:
+                refugios.append({
+                    'id': refugio[0],
+                    'nombre': refugio[1],
+                    'numero_de_telefono': refugio[2],
+                    'provincia': refugio[3],
+                    'municipio': refugio[4],
+                    'localidad': refugio[5],
+                    'calle': refugio[6],
+                    'numero_de_calle': refugio[7]
+                })
+            return jsonify(refugios)
         except SQLAlchemyError as e:
             return str(e)
     elif request.method == 'POST':
@@ -38,6 +50,7 @@ def refugios():
             cursor = conn.cursor()
         # conseguir valores mediante request
             nuevo_refugio = request.get_json()
+            id = nuevo_refugio['id']
             nombre = nuevo_refugio['nombre']
             numero_de_telefono = nuevo_refugio['numero_de_telefono']
             provincia = nuevo_refugio['provincia']

@@ -19,6 +19,7 @@ CREATE TABLE IF NOT EXISTS animales (
 );
 
 CREATE TABLE IF NOT EXISTS centros (
+    id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(50),
     numero_de_telefono INT,
     provincia VARCHAR(50),
