@@ -305,55 +305,29 @@ h1 {
     text-align: right;
 }
 
-/*VER CENTRO*/
-
-.centro {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    margin: 10px;
-    width: 300px;
-}
-
-.titulocentro h1
-{
-    font-family: Comic sans-serif;
-}
-
-.centro
-{
-    align-items: center;
-    background-color: rgba(76, 175, 80, 0.5); 
-}
-
-.centro  {
-    margin-top: 0;
-
-}
 .footer {
-    margin-top: 20px;
-    text-align: center;
+  margin-top: 20px;
+  text-align: center;
 }
 
 .imagencentro img
 {
-    max-width: 100%; 
-    height: auto; 
-    margin-bottom: 10px;
+  max-width: 100%; 
+  height: auto; 
+  margin-bottom: 10px;
 }
 
 .imagenAnimal
 {
-    max-width: 180px; 
-    height: 180px;
-    margin-bottom: 10px;
+  max-width: 180px; 
+  height: 180px;
+  margin-bottom: 10px;
 }
-
 
 .mapouter .gmap_canvas
 {
-    width: 100 px;
-    height: 100 px;
+  width: 100 px;
+  height: 100 px;
 }
 
 .Info 
@@ -369,4 +343,65 @@ h1 {
 
 .Info ul{
     padding-left: 20px;
+}
+
+/*VER CENTRO*/
+
+.titulocentro h1
+{
+  font-family: Comic sans-serif;
+}
+
+.centrosBox{
+  margin: 0 auto;
+  height: 80dvh;
+  width: 90%;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.listaCentros{
+  height: 100%;
+  width: 50%;
+  overflow-y: scroll;
+}
+
+.centro{
+  margin: 5px;
+  height: min-content;
+  border: 3px solid #68aa6ab7;
+  background: rgba(242, 247, 199, 0.808);
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.centro div{
+  display: flex;
+  justify-content: end;
+}
+
+.centro h3{
+  font-size: 1.5rem;
+}
+
+.centro p{
+  margin-top: 5px;
+}
+
+.centro button{
+  margin-top: 10px;
+  border: 0;
+  border: 2px solid #68aa6ab7;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 5px;
+  width: 50%;
+  background: rgba(167, 199, 168, 0.5);
+}
+
+.centrosMap{
+  border-radius: 5px;
+  height: 100%;
+  width: 50%;
 }

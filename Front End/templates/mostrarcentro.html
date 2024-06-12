@@ -2,32 +2,32 @@
 
 {% block content %}
 
-    <div class="titulocentro">
-        <h1>Centros de Acogida de Animales Perdidos</h1>
-    </div>
-    
-    <div style="display:flex; justify-content: center;" >
+<div class="titulocentro">
+  <h1>Centros de Acogida de Animales Perdidos</h1>
+</div>
 
-    <div class="centro">
-        <h2>Nombre del refugio:{{nombrecentro}}</h2>
-        <p><strong>Dirección:</strong> {{direccion}}</p>
-        <p><strong>Teléfono:</strong> {{telefono}}</p>
-        <p><strong>Correo Electrónico:</strong> {{email}}</p>
-        <br>
-        <div class="imagencentro">
-            <img src="{{url_for('static', filename='images/centro.png')}}"> 
-        </div>
+<div class="centrosBox">
+  <div class="listaCentros">
+    {% for centro in data %}
+    <div id="centro_{{centro.id}}" class="centro">
+      <h3>{{centro.nombre}}</h3>
+      <p>Teléfono: {{centro.contacto}}</p>
+      <p>Correo Electrónico: {{centro.email}}</p>
+      <p>Dirección: {{centro.direccion}}</p>
+      <div><button id="boton_centro_{{centro.id}}"  type="button">Ver en mapa</button></div>
     </div>
-    <br>
-    <div class="centro">
-        <h2>Nombre del refugio:{{nombrecentro}}</h2>
-        <p><strong>Dirección:</strong>{{direccion}}</p>
-        <p><strong>Teléfono:</strong> {{telefono}}</p>
-        <p><strong>Correo Electrónico:</strong> {{email}}</p>
-        <br>
-        <div class="imagencentro">
-            <img src="{{url_for('static', filename='images/centro2.png')}}"> 
-        </div>
-    </div>
+    {% endfor %}
+  </div>
+  <div class="centrosMap" style="text-decoration:none; overflow:hidden;">
+    <iframe style="height:100%;width:100%;border:0;" frameborder="0"
+      src="https://maps.google.com/maps?q=buenos+aires&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+  </div>
+</div>
+
+<script>
+  let centros_mascotas = JSON.parse(`{{data|tojson}}`);
+</script>
+
+<script src="{{url_for('static',filename = 'js/mostrarcentros.js')}}"></script>
 
 {% endblock %}
