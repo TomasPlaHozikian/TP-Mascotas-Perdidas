@@ -12,6 +12,22 @@ def home():
     data = response.json()
     return render_template('home.html', data=data)
 
+@app.route('/resultado', methods=['GET', 'POST'])
+def resultado():
+    params = {
+            'nombre': request.form.get('fnombre'),
+            'especie': request.form.get('fespecie'),
+            'raza': request.form.get('fraza'),
+            'provincia': request.form.get('fprovincia'),
+            'municipio': request.form.get('fmunicipio'),
+            'localidad': request.form.get('flocalidad')
+        }
+
+    response = requests.get('http://127.0.0.1:5000/animales', params=params)
+    data = response.json()
+    return render_template('resultado.html', data=data)
+
+
 @app.route('/busqueda')
 def buscar():
     return render_template('buscaranimal.html')
@@ -23,7 +39,7 @@ def iniciar_sesion():
 @app.route('/registrar_usuario')
 def registrar_usuario():
     return render_template('registrarusuario.html')
-
+"""
 @app.route('/registrar', methods=["GET", "POST"])
 def iniciar_sesion():
     if request.method == "POST":
@@ -41,7 +57,7 @@ def iniciar_sesion():
             return redirect(url_for('registrar'))
     else:
         return render_template('iniciosesion.html')
-
+"""
 @app.route('/perfilpropio')
 def perfil():
     return render_template('perfilpropio.html')
