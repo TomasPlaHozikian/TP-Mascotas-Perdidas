@@ -38,9 +38,9 @@
       <a href="{{ url_for('home') }}"><img class="logoFooter" src="{{ url_for('static', filename='/images/logo.png')}}"></a>
       <ul>
         <li><a href="#">Encontré una Mascota</a></li>
-        <li><a href="#">Busco a mi Mascota</a></li>
-        <li><a href="#">Mostrar Centros</a></li>
-        <li><a href="#">Registrar Centros</a></li>
+        <li><a href="{{url_for('buscar')}}">Busco a mi Mascota</a></li>
+        <li><a href="{{url_for('ver_centro')}}">Mostrar Centros</a></li>
+        <li><a href="{{url_for('registrar_centro')}}">Registrar Centros</a></li>
       </ul>
       <ul>
         <li><a href="{{url_for('quienes_somos')}}">Quienes somos</a></li>
