@@ -20,7 +20,12 @@ CREATE TABLE IF NOT EXISTS animales (
 
 CREATE TABLE IF NOT EXISTS centros (
     nombre VARCHAR(50),
-    direccion VARCHAR(50)
+    numero_de_telefono INT,
+    provincia VARCHAR(50),
+    municipio VARCHAR(50),
+    localidad VARCHAR(50),
+    calle VARCHAR(50),
+    numero_de_calle INT
 );
 
 INSERT INTO usuarios (nombre, apellido, mail, numero, contrasena) VALUES ('Juan', 'Perez', 'juan@mail.com',123456789, 'hola12345');
@@ -30,5 +35,7 @@ INSERT INTO animales (nombre, especie, raza, provincia, municipio, localidad, ca
 INSERT INTO animales (nombre, especie, raza, provincia, municipio, localidad, calle, numero, foto) VALUES ('Mishi', 'Gato', 'Siames', 'Buenos Aires', 'Lanus', 'Remedios De Escalda', 'Lugones', 200, 'https://cdn0.soyungato.com/es/razas/0/2/0/gato-siames_20_9_150_square.jpg');
 INSERT INTO animales (nombre, especie, raza, provincia, municipio, localidad, calle, numero, foto) VALUES ('Jorge', 'Gato', 'Calle', 'Buenos Aires', 'Lanus', 'Valentin Alsina', 'Paraguay', 4000, 'https://www.warrenphotographic.co.uk/photography/sqrs/17693.jpg');
 
-INSERT INTO centros (nombre, direccion) VALUES ('Centro de adopcion de animales', 'Calle 789');
-INSERT INTO centros (nombre, direccion) VALUES ('Centro de adopcion de animales 2', 'Calle 1011');
+INSERT INTO centros (nombre, numero_de_telefono, provincia, municipio, localidad, calle, numero_de_calle) VALUES ('Centro de adopcion de animales', 11111111, 'Buenos Aires', 'Lanus', 'Lanus', 'Ituzaingo', 1282);
+
+INSERT INTO centros (nombre, numero_de_telefono, provincia, municipio, localidad, calle, numero_de_calle) VALUES ('Centro de adopcion de animales 2', 11111111, 'Buenos Aires', 'Almirante Brown', 'Rafael Calzada', 'AV San Martin', 1562);
+

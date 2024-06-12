@@ -20,11 +20,6 @@ def set_connection():
 def index():
     return render_template('index.html')
 
-refugio = [
-    {'id':1, 'name': 'idoboga'},
-    {'id':2, 'name': 'boca'}
-            ]
-
 @app.route('/refugios', methods=['GET','POST'])
 def refugios():
     if request.method == 'GET':
@@ -43,10 +38,17 @@ def refugios():
             cursor = conn.cursor()
         # conseguir valores mediante request
             nuevo_refugio = request.get_json()
-            direccion = nuevo_refugio['direccion']
             nombre = nuevo_refugio['nombre']
+            numero_de_telefono = nuevo_refugio['numero_de_telefono']
+            provincia = nuevo_refugio['provincia']
+            municipio = nuevo_refugio['municipio']
+            localidad = nuevo_refugio['localidad']
+            calle = nuevo_refugio['calle']
+            numero_de_calle = nuevo_refugio['numero_de_calle']
+
+
         # insertar valores en la tabla
-            cursor.execute(f"INSERT INTO centros (direccion,nombre) VALUES ('{direccion}', '{nombre}')")
+            cursor.execute(f"INSERT INTO centros (nombre, numero_de_telefono, provincia, municipio, localidad, calle, numero_de_calle) VALUES ('{nombre}', {numero_de_telefono}, '{provincia}', '{municipio}', '{localidad}', '{calle}', {numero_de_calle})")
             conn.commit()
             conn.close()
             return jsonify({'message': 'Refugio creado correctamente'})
