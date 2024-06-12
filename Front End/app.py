@@ -41,7 +41,7 @@ def registrar_mascota():
       
 @app.route ('/vercentro')
 def ver_centro():
-    response = requests.get('http://127.0.0.1:5001/refugios')
+    response = requests.get('http://127.0.0.1:5000/refugios')
     data = response.json()
     return render_template('mostrarcentro.html', data = data)
 

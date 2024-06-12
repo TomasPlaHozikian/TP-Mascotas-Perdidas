@@ -11,9 +11,9 @@
     {% for centro in data %}
     <div id="centro_{{centro.id}}" class="centro">
       <h3>{{centro.nombre}}</h3>
-      <p>Teléfono: {{centro.contacto}}</p>
+      <p>Teléfono: {{centro.numero_de_telefono}}</p>
       <p>Correo Electrónico: {{centro.email}}</p>
-      <p>Dirección: {{centro.direccion}}</p>
+      <p id="dir_centro_{{centro.id}}">Dirección: </p>
       <div><button id="boton_centro_{{centro.id}}"  type="button">Ver en mapa</button></div>
     </div>
     {% endfor %}
