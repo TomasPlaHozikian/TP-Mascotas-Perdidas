@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <title>Preguntas Frecuentes</title>
+
+    <div class="titulo_preguntas">
+        <h1>Preguntas Frecuentes</h1>
+    </div>
+
+    <div class="preguntas_respuestas">
+        <div class="pregunta">
+            ¿Que les ofrece esta pagina?
+            <span class="flecha">&#9662;</span>
+        </div>
+        <div class="respuesta">Lo que intentamos brindarte es la posibilidad de encontrar a esa mascota que tanto queres, o asi mismo contribuir con la muestra de refugios y centros de acogida de animales. Sabemos lo estresante que es no poder encontrar a ese amigo, por eso que queremos ayudarte con esta pagina.</div>
+        <br>
+        <div class="pregunta">
+            ¿Qué hago si pierdo a mi mascota?
+            <span class="flecha">&#9662;</span>
+        </div>
+        <div class="respuesta">Te brindamos la posibilidad de poder hacer una publicacion acerca de tu mascota, indicando nombre al que responde, especie, raza, una foto y una ubicacion cercana adonde perdiste a tu mascota. Nuestro sitio lo va a publicar en formato de tarjeta, y asi lograr que mas usuarios lo vean.</div>
+        <br>
+        <div class="pregunta">
+            ¿Existe la posibilidad de ver donde se encuentran refugios?
+            <span class="flecha">&#9662;</span>
+        </div>
+        <div class="respuesta">Si, contamos con esa funcion. Puedes pulsar encima de la palabra "mostrar centros" que se ubica en la parte superior de la pagina. Tambien contamos con la opcion de que puedas registrar un centro o refugio, basta con solo pulsar la palabra "Registrar centro" y poner tus datos y foto del centro.</div>
+        <br>
+        <div class="pregunta">
+            ¿Puedo buscar a una mascota y filtrarla segun raza, especie y otros filtros?
+            <span class="flecha">&#9662;</span>
+        </div>
+        <div class="respuesta">Si, claro!! Puedes pulsar encima de la palabra "Busco a mi mascota", y ahi podes introducir la informacion de la mascota la cual estas buscando. Luego tendras un boton para poder filtrar segun tus necesidades. Esperamos encuentres a tus mascota!  </div>
+    </div>
+
+    <script>
+        var pregunta = document.querySelectorAll('.pregunta');
+
+        pregunta.forEach(function(pregunta) {
+            
+            pregunta.addEventListener('click', function()   
+            {
+                this.classList.toggle('active');
+                var respuesta = this.nextElementSibling;               
+                if (respuesta.style.display === 'block') {
+                    respuesta.style.display = 'none';
+                } else {
+                    respuesta.style.display = 'block';
+                }
+            }
+            );
+        });
+    </script>
+
+{% endblock %}
