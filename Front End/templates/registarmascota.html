@@ -3,7 +3,7 @@
 {% block content %}
 
 <div class="iniciar_sesion">
-    <form action="" class="form_iniciar_sesion">
+    <form action="carga_animal" class="form_iniciar_sesion">
         <div>
             <label for="fnombre">Nombre</label>
             <input type="text" name="fname" id="fnombre">
@@ -14,17 +14,30 @@
             <label for="raza">Raza</label>
             <input type="text" name="fraza" id="raza">
 
-            <label for="direccion">Direccion</label>
-            <input type="text" name="fdireccion" id="direccion">
+            <label for="provincia">Provincia</label>
+            <input type="text" name="fprovincia" id="provincia">
 
-            <label for="image">Subir foto:</label>
-            <div class="subir_imagen">
+            <label for="municipio">Municipio</label>
+            <input type="text" name="fmunicipio" id="municipio">
+
+            <label for="localidad">Loclaidad</label>
+            <input type="text" name="flocalidad" id="localidad">
+
+            <label for="calle">Calle</label>
+            <input type="text" name="fcalle" id="calle">
+
+            <label for="numero">Numero</label>
+            <input type="number" name="fnumero" id="numero">
+
+            <label for="image">Subir enlace de foto:</label>
+            <input type="text" name="ffoto" id="foto">
+            <!--<div class="subir_imagen">
                 <input class="elegir_archivo" type="file" name="file" id="file">
                 <label for="file" class="subir_archivo">Seleccionar archivo</label>
-            </div>
+            </div>-->
             
         </div>
-        <input class="boton" type="button" value="Registrar">
+        <input class="boton" type="submit" value="Registrar">
     </form>
 </div>
 
