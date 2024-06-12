@@ -45,8 +45,6 @@ def refugios():
             localidad = nuevo_refugio['localidad']
             calle = nuevo_refugio['calle']
             numero_de_calle = nuevo_refugio['numero_de_calle']
-
-
         # insertar valores en la tabla
             cursor.execute(f"INSERT INTO centros (nombre, numero_de_telefono, provincia, municipio, localidad, calle, numero_de_calle) VALUES ('{nombre}', {numero_de_telefono}, '{provincia}', '{municipio}', '{localidad}', '{calle}', {numero_de_calle})")
             conn.commit()
@@ -63,6 +61,7 @@ def borrar_refugio(nombre):
         conn = set_connection()
         cursor = conn.cursor()
         # eliminar valores en la tabla
+        #cursor.execute(f"SELECT nombre FROM centros WHERE nombre='{nombre}'")
         cursor.execute(f"DELETE FROM centros WHERE nombre='{nombre}'")
         conn.commit()
         conn.close()
@@ -70,6 +69,22 @@ def borrar_refugio(nombre):
     except SQLAlchemyError as e:
         return str(e)
 
+
+@app.route('/modificar_refugio/<nombre>', methods=['PATCH'])
+def modificar_refugio(nombre):
+    try:
+        modificaciones = request.get_json()
+        conn = set_connection()
+        cursor = conn.cursor()
+
+        for modificacion in modificaciones:
+            cursor.execute(f"UPDATE centros SET {modificacion}='{modificaciones[modificacion]}' WHERE nombre='{nombre}'")
+        
+        conn.commit()
+        conn.close()
+        return jsonify({'message': 'Refugio modificado correctamente'})
+    except SQLAlchemyError as e:
+        return str(e)
 
 
 
