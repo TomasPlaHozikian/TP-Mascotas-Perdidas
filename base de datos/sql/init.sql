@@ -43,7 +43,7 @@ INSERT INTO centros (nombre, numero_de_telefono, email, provincia, municipio, lo
 
 INSERT INTO centros (nombre, numero_de_telefono, email, provincia, municipio, localidad, calle, numero_de_calle) VALUES ('Centro de adopcion de animales 3', 11111111, 'centro3@gmail.com', 'Buenos Aires', 'CABA', 'CABA', 'Av. Rivadavia', 1300);
 
-INSERT INTO centros (nombre, numero_de_telefono, email, provincia, municipio, localidad, calle, numero_de_calle) VALUES ('Centro de adopcion de animales 4', 11111111, 'centro4@gmail.com', 'Buenos Aires', 'CABA', 'CABA', 'Av. Costanera Sur', 700);
+INSERT INTO centros (nombre, numero_de_telefono, email, provincia, municipio, localidad, calle, numero_de_calle) VALUES ('Centro de adopcion de animales 4', 11111111, 'centro4@gmail.com', 'Buenos Aires', 'CABA', 'CABA', 'Av. Corrientes', 2200);
 
 INSERT INTO centros (nombre, numero_de_telefono, email, provincia, municipio, localidad, calle, numero_de_calle) VALUES ('Centro de adopcion de animales 5', 11111111, 'centro5@gmail.com', 'Buenos Aires', 'CABA', 'CABA', 'Av. Callao', 1234);
 
