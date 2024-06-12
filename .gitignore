@@ -2,3 +2,8 @@ venv
 *.pyc
 *.pyc
 .venv
+*.csh
+*.fish
+*.cfg
+*.csh
+*.pyc

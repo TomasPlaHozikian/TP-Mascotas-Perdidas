@@ -205,7 +205,31 @@ def animales():
         try:
             conn = set_connection()
             cursor = conn.cursor()
-            cursor.execute('SELECT * FROM animales')
+
+            #params del request
+            nombre = request.args.get('nombre')
+            especie = request.args.get('especie')
+            raza = request.args.get('raza')
+            provincia = request.args.get('provincia')
+            municipio = request.args.get('municipio')
+            localidad = request.args.get('localidad')
+
+            #query armada
+            query = 'SELECT * FROM animales WHERE 1=1'
+            if nombre:
+                query += f" AND nombre='{nombre}'"
+            if especie:
+                query += f" AND especie='{especie}'"
+            if raza:
+                query += f" AND raza='{raza}'"
+            if provincia:
+                query += f" AND provincia='{provincia}'"
+            if municipio:
+                query += f" AND municipio='{municipio}'"
+            if localidad:
+                query += f" AND localidad='{localidad}'"
+            
+            cursor.execute(query)
             result = cursor.fetchall()
             conn.close()
             return jsonify(result)
