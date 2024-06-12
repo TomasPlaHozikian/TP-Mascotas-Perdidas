@@ -39,25 +39,23 @@ def iniciar_sesion():
 @app.route('/registrar_usuario')
 def registrar_usuario():
     return render_template('registrarusuario.html')
-"""
-@app.route('/registrar', methods=["GET", "POST"])
-def iniciar_sesion():
-    if request.method == "POST":
-        nombre = request.form["fname"]
-        apellido = request.form["lname"]
-        email = request.form["email"]
-        telefono = request.form["phone"]
-        password = request.form["password"]
-        payload = {"fname": nombre, "lname": apellido, "email": email, "phone": telefono, "password": password }
-        NuevoUsuario = requests.post('http://localhost:5000/registrarUsuario', data=payload)
-        print(NuevoUsuario)
-        if NuevoUsuario["id"] == 1:
-            return render_template('home.html', nombre=nombre)
+
+@app.route('/mandar_usuario', methods=["POST"])
+def mandar_usuario():
+        nombre = request.form.get("fname")
+        apellido = request.form.get("lname")
+        email = request.form.get("email")
+        telefono = request.form.get("phone")
+        password = request.form.get("password")
+        payload = {"nombre": nombre, "apellido": apellido, "mail": email, "numero": telefono, "contrasena": password }
+        NuevoUsuario = requests.post('http://localhost:5000/usuarioscargar', data=payload)
+        NUJson = NuevoUsuario.json()
+        print(NUJson["id"])
+        if NUJson["id"] == 1:
+            return redirect(url_for('perfil', nombre=nombre, email=email, telefono=telefono))
         else:
-            return redirect(url_for('registrar'))
-    else:
-        return render_template('iniciosesion.html')
-"""
+            return redirect(url_for('registrar_usuario'))
+
 @app.route('/perfilpropio')
 def perfil():
     return render_template('perfilpropio.html')
