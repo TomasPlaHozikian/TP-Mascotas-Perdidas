@@ -66,5 +66,13 @@ def cargar_mascota():
 def quienes_somos():
     return render_template('quienes_somos.html')
 
+@app.route('/preguntas_frecuentes')
+def preguntas_frecuentes():
+    return render_template('preguntas_frecuentes.html')
+
+@app.route ('/contacto')
+def contacto():
+    return render_template('contacto.html')
+
 if __name__ == '__main__':
     app.run(debug=True, host='127.0.0.1', port=5001)
