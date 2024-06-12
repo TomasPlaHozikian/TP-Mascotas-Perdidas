@@ -44,7 +44,23 @@ def ver_centro():
     return render_template('mostrarcentro.html')
 
 
-
+@app.route('/cargar_mascota', methods=['GET', 'POST'])
+def cargar_mascota():
+    if request.method == 'POST':
+        data = {
+            'nombre': request.form.get('fname'),
+            'especie': request.form.get('fespecie'),
+            'raza': request.form.get('fraza'),
+            'provincia': request.form.get('fprovincia'),
+            'municipio': request.form.get('fmunicipio'),
+            'localidad': request.form.get('flocalidad'),
+            'calle': request.form.get('fcalle'),
+            'numero': request.form.get('fnumero'),
+            'foto': request.form.get('ffoto')
+        }
+        response = requests.post('http://127.0.0.1:5000/animales', json=data)
+        # Handle the response
+    return render_template('registarmascota.html')
 
 if __name__ == '__main__':
     app.run(debug=True, host='127.0.0.1', port=5001)
