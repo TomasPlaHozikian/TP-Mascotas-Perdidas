@@ -188,6 +188,9 @@ def cargar_usuario():
         contrasena = request.form.get('contrasena')
         # insertar valores en la tabla
 
+        if not all([nombre, apellido, mail, numero, contrasena]):
+            return jsonify({"message": "Faltan datos", "id": 0}), 400
+
         cursor.execute('SELECT * FROM usuarios')
         rows = cursor.fetchall()
         column_names = [desc[0] for desc in cursor.description]
