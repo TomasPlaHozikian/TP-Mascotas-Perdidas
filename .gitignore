@@ -9,3 +9,12 @@ __pycache__
 *.pyc
 *.pyc
 .venv
+venv
+*.pyc
+*.pyc
+.venv
+*.csh
+*.fish
+*.cfg
+*.csh
+*.pyc
