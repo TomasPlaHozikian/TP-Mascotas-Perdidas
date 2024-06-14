@@ -153,6 +153,18 @@ def get_usuarios():
         return jsonify(result)
     except SQLAlchemyError as e:
         return str(e)
+    
+@app.route('/obtener_usuario_particular/<id>', methods=['GET'])
+def get_usuario_particular(id):
+    try:
+        conn = set_connection()
+        cursor = conn.cursor()
+        cursor.execute(f"SELECT * FROM usuarios WHERE id='{id}'")
+        result = cursor.fetchall()
+        conn.close()
+        return jsonify(result)
+    except SQLAlchemyError as e:
+        return str(e)
 
 
 #luego se utilizara fetch mediante javascript para recibir datos del html en formato json,
