@@ -1,4 +1,4 @@
-#!/home/luciano/Documentos/facultad/Introduccion_Al_Desarrollo_De_Software/TP-Mascotas-Perdidas/venv/bin/python3
+#!/home/luciano/Documentos/facultad/TP-Mascotas-Perdidas/venv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys

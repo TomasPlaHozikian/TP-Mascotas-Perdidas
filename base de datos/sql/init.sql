@@ -1,4 +1,5 @@
 CREATE TABLE IF NOT EXISTS usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(50),
     apellido VARCHAR(50),
     mail VARCHAR(50),
@@ -7,7 +8,9 @@ CREATE TABLE IF NOT EXISTS usuarios (
 );
 
 CREATE TABLE IF NOT EXISTS animales (
+    id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(50),
+    FOREIGN KEY(creado_por) REFERENCES usuarios(nombre)
     especie VARCHAR(50),
     raza VARCHAR(50),
     provincia VARCHAR(50),
