@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, jsonify, redirect, url_for
-
+import json
 import requests
 
 app = Flask(__name__)
@@ -64,7 +64,14 @@ def perfil():
 
 @app.route('/perfilajeno')
 def perfilajeno():
-    return render_template('perfilajeno.html')
+    id = request.args.get('id')
+    response = requests.get(f'https://apianimalesperdidos.pythonanywhere.com/obtener_usuario_particular/{id}')
+    data = response.json()
+    if not data:
+        data = "no encontrado"
+    else:
+        id, nombre, apellido, mail, numero, _ = data[0]
+    return render_template('perfilajeno.html', nombre=nombre, apellido=apellido, mail=mail, numero=numero)
 
 @app.route('/registar_centro')
 def registrar_centro():

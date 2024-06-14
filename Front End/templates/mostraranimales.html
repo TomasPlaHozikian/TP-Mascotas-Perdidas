@@ -7,7 +7,7 @@
 
             <div class="textoCarta">
                 <h2>Nombre del animal: {{animal[2]}}</h2>
-                <p>dueño: <a href="{{url_for('perfilajeno')}}">{{data2[animal[1]-1]['nombre']}}</a></p>
+                <a href="/perfilajeno?id={{ data2[animal[1]-1]['id'] }}">{{ data2[animal[1]-1]['nombre'] }}</a>
                 <p>Se perdió en los alrededores de: {{ animal[7] }}</p>
                 <p>Especie: {{ animal[3] }}</p>
                 <p>Raza: {{ animal[4] }}</p>
