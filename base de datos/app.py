@@ -202,8 +202,6 @@ def cargar_usuario():
                 if usuario["nombre"].lower() == nombre_a_buscar.lower():
                     return True
             return False
-        print(nombre)
-        print(verifNombre(result,nombre))
 
         if verifNombre(result,nombre) is False:
             cursor.execute(f"INSERT INTO usuarios (nombre, apellido, mail, numero, contrasena) VALUES ('{nombre}', '{apellido}', '{mail}', '{numero}', '{contrasena}')")
