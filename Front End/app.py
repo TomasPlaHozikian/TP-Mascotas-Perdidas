@@ -8,8 +8,8 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    response = requests.get('https://matir.pythonanywhere.com/animales')
-    response2 = requests.get('https://matir.pythonanywhere.com/usuarios')
+    response = requests.get('https://apianimalesperdidos.pythonanywhere.com/animales')
+    response2 = requests.get('https://apianimalesperdidos.pythonanywhere.com/usuarios')
     data = response.json()
     data2 = response2.json()
     return render_template('home.html', data=data, data2=data2)
@@ -25,7 +25,7 @@ def resultado():
             'localidad': request.form.get('flocalidad')
         }
 
-    response = requests.get('https://matir.pythonanywhere.com/animales', params=params)
+    response = requests.get('https://apianimalesperdidos.pythonanywhere.com/animales', params=params)
     data = response.json()
     return render_template('resultado.html', data=data)
 
@@ -50,7 +50,7 @@ def mandar_usuario():
         telefono = request.form.get("phone")
         password = request.form.get("password")
         payload = {"nombre": nombre, "apellido": apellido, "mail": email, "numero": telefono, "contrasena": password }
-        NuevoUsuario = requests.post('https://matir.pythonanywhere.com/usuarioscargar', data=payload)
+        NuevoUsuario = requests.post('https://apianimalesperdidos.pythonanywhere.com/usuarioscargar', data=payload)
         NUJson = NuevoUsuario.json()
         print(NUJson["id"])
         if NUJson["id"] == 1:
@@ -76,7 +76,7 @@ def registrar_mascota():
       
 @app.route ('/vercentro')
 def ver_centro():
-    response = requests.get('https://matir.pythonanywhere.com/refugios')
+    response = requests.get('https://apianimalesperdidos.pythonanywhere.com/refugios')
     data = response.json()
     return render_template('mostrarcentro.html', data = data)
 
@@ -95,7 +95,7 @@ def cargar_mascota():
             'numero': request.form.get('fnumero'),
             'foto': request.form.get('ffoto')
         }
-        response = requests.post('https://matir.pythonanywhere.com/animales', json=data)
+        response = requests.post('https://apianimalesperdidos.pythonanywhere.com/animales', json=data)
         # Handle the response
     return render_template('registarmascota.html')
 
