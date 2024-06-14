@@ -12,6 +12,8 @@ def home():
     response2 = requests.get('https://apianimalesperdidos.pythonanywhere.com/usuarios')
     data = response.json()
     data2 = response2.json()
+    if "user" in session:
+        return render_template('home.html', data=data, data2=data2, logged_in=True)
     return render_template('home.html', data=data, data2=data2)
 
 @app.route('/resultado', methods=['GET', 'POST'])
