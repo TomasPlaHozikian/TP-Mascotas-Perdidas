@@ -6,19 +6,19 @@
     <form action="/mandar_usuario" method="POST" class="form_iniciar_sesion">
         <div>
             <label for="fname">Nombre</label>
-            <input type="text" name="fname" id="firstname">
+            <input type="text" name="fname" id="firstname" required>
 
             <label for="lname">Apellido</label>
-            <input type="text" name="lname" id="lastname">
+            <input type="text" name="lname" id="lastname" required>
 
             <label for="email">Correo electronico</label>
-            <input type="text" name="email" id="mail">
+            <input type="email" name="email" id="mail" required>
 
             <label for="phone">Numero de telefono</label>
-            <input type="text" name="phone" id="phone">
+            <input type="number" name="phone" id="phone" required>
 
             <label for="password">Contraseña</label>
-            <input type="password" name="password" id="password">
+            <input type="password" name="password" id="password" required>
         </div>
         <input class="boton" type="submit" value="Registrarte">   
     </form>

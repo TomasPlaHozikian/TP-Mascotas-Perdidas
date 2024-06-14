@@ -1,10 +1,10 @@
-from flask import Flask, render_template, request, jsonify, redirect, url_for
+from flask import Flask, render_template, request, jsonify, redirect, url_for, session
 import json
 import requests
 
 app = Flask(__name__)
 
-
+app.secret_key = "helloworld"
 
 @app.route('/')
 def home():
@@ -34,8 +34,27 @@ def resultado():
 def buscar():
     return render_template('buscaranimal.html')
 
-@app.route('/login')
+def verifUsuario(lista_usuarios, nombre_a_buscar, contrasena_a_buscar):
+    for usuario in lista_usuarios:
+        if (usuario["nombre"].lower() == nombre_a_buscar.lower()) and (usuario["contrasena"].lower() == contrasena_a_buscar.lower()):
+            return True
+    return False
+
+@app.route('/iniciar_sesion')
 def iniciar_sesion():
+    return render_template('iniciosesion.html')
+
+@app.route('/login', methods=["POST"])
+def login():
+    user = request.form.get("user")
+    password = request.form.get("password")
+    usuarios = requests.get('https://apianimalesperdidos.pythonanywhere.com/usuarios')
+
+
+    if verifUsuario(usuarios.json(), user, password) is True:
+        session['user'] = user
+        return redirect(url_for('perfilpropio'))
+
     return render_template('iniciosesion.html')
 
 @app.route('/registrar_usuario')
@@ -54,13 +73,16 @@ def mandar_usuario():
         NUJson = NuevoUsuario.json()
         print(NUJson["id"])
         if NUJson["id"] == 1:
-            return redirect(url_for('perfil', nombre=nombre, email=email, telefono=telefono))
+            return redirect(url_for('perfilpropio', nombre=nombre, email=email, telefono=telefono))
         else:
             return redirect(url_for('registrar_usuario'))
 
 @app.route('/perfilpropio')
-def perfil():
-    return render_template('perfilpropio.html')
+def perfilpropio():
+    if "user" in session:
+        nombre = session['user']
+        return render_template('perfilpropio.html', nombre=nombre)
+    return redirect(url_for('iniciar_sesion'))
 
 @app.route('/perfilajeno')
 def perfilajeno():
