@@ -39,8 +39,8 @@ def buscar():
 def verifUsuario(lista_usuarios, nombre_a_buscar, contrasena_a_buscar):
     for usuario in lista_usuarios:
         if (usuario["nombre"].lower() == nombre_a_buscar.lower()) and (usuario["contrasena"].lower() == contrasena_a_buscar.lower()):
-            return True
-    return False
+            return usuario
+    return None
 
 @app.route('/iniciar_sesion')
 def iniciar_sesion():
@@ -52,9 +52,11 @@ def login():
     password = request.form.get("password")
     usuarios = requests.get('https://apianimalesperdidos.pythonanywhere.com/usuarios')
 
+    logged_in_user = verifUsuario(usuarios.json(), user, password)
 
-    if verifUsuario(usuarios.json(), user, password) is True:
-        session['user'] = user
+    if logged_in_user is not None:
+        session['user_info'] = logged_in_user
+        print(session['user_info'])
         return redirect(url_for('perfilpropio'))
 
     return render_template('iniciosesion.html')
@@ -86,9 +88,11 @@ def mandar_usuario():
 
 @app.route('/perfilpropio')
 def perfilpropio():
-    if "user" in session:
-        nombre = session['user']
-        return render_template('perfilpropio.html', nombre=nombre)
+    if "user_info" in session:
+        nombre = session['user_info']['nombre'] + " " + session['user_info']['apellido']
+        email = session['user_info']['mail']
+        telefono = session['user_info']['numero']
+        return render_template('perfilpropio.html', nombre=nombre, email=email, telefono=telefono)
     return redirect(url_for('iniciar_sesion'))
 
 @app.route('/perfilajeno')

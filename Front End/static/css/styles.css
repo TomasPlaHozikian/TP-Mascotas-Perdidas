@@ -14,6 +14,11 @@ header{
     margin-bottom: 5%;
 }
 
+.logoClick{
+    display: flex;
+    align-items: center;
+}
+
 .logo{
     width: 75px;
     height: 75px;
@@ -88,6 +93,7 @@ header{
 }
 
 footer{
+  position: sticky;
   margin-top: 5%;
   background: #4CAF50;
   padding: 30px 50px;
