@@ -93,7 +93,7 @@ def modificar_refugio(nombre):
 
         for modificacion in modificaciones:
             cursor.execute(f"UPDATE centros SET {modificacion}='{modificaciones[modificacion]}' WHERE nombre='{nombre}'")
-        
+
         conn.commit()
         conn.close()
         return jsonify({'message': 'Refugio modificado correctamente'})
@@ -112,10 +112,10 @@ def cargarusuario():
 
 def set_connection():
     conn = mysql.connector.connect(
-        user='root',
-        password='test',
-        host='localhost',
-        database='tp')
+        user='APIAnimalesperdi',
+        password='PruebadbIntro',
+        host='APIAnimalesperdidos.mysql.pythonanywhere-services.com',
+        database='APIAnimalesperdi$tp')
     return conn
 
 
@@ -139,7 +139,7 @@ def get_animales():
         return jsonify(result)
     except SQLAlchemyError as e:
         return str(e)
-    
+
 @app.route('/usuarios', methods=['GET'])
 def get_usuarios():
     try:
@@ -149,6 +149,18 @@ def get_usuarios():
         rows = cursor.fetchall()
         column_names = [desc[0] for desc in cursor.description]
         result = [dict(zip(column_names, row)) for row in rows]
+        conn.close()
+        return jsonify(result)
+    except SQLAlchemyError as e:
+        return str(e)
+
+@app.route('/obtener_usuario_particular/<id>', methods=['GET'])
+def get_usuario_particular(id):
+    try:
+        conn = set_connection()
+        cursor = conn.cursor()
+        cursor.execute(f"SELECT * FROM usuarios WHERE id='{id}'")
+        result = cursor.fetchall()
         conn.close()
         return jsonify(result)
     except SQLAlchemyError as e:
@@ -202,6 +214,8 @@ def cargar_usuario():
                 if usuario["nombre"].lower() == nombre_a_buscar.lower():
                     return True
             return False
+        print(nombre)
+        print(verifNombre(result,nombre))
 
         if verifNombre(result,nombre) is False:
             cursor.execute(f"INSERT INTO usuarios (nombre, apellido, mail, numero, contrasena) VALUES ('{nombre}', '{apellido}', '{mail}', '{numero}', '{contrasena}')")
@@ -210,7 +224,7 @@ def cargar_usuario():
             return jsonify({"message":"User inserted successfully","id":1})
         else:
             return jsonify({"message": "ese usuario ya existe", "id": 2})
-        
+
     except SQLAlchemyError as e:
         return str(e)
 
@@ -247,7 +261,7 @@ def animales():
                 query += f" AND municipio='{municipio}'"
             if localidad:
                 query += f" AND localidad='{localidad}'"
-            
+
             cursor.execute(query)
             result = cursor.fetchall()
             conn.close()
@@ -260,6 +274,7 @@ def animales():
             cursor = conn.cursor()
         # conseguir valores mediante request
             nuevo_animal = request.get_json()
+            creado_por = nuevo_animal['creado_por']
             nombre = nuevo_animal['nombre']
             especie = nuevo_animal['especie']
             raza = nuevo_animal['raza']
@@ -272,7 +287,7 @@ def animales():
         # insertar valores en la tabla
         #{ "direccion" : "calzada", "nombre": "polideportivo" }
         #{"nombre": "Jorge", "especie" : "Gato", "raza" : "Calle", "provincia": "Buenos Aires", "municipio": "Lanus", "localidad": "Valentin Alsina", "calle": "Paraguay", "numero": "3254", "foto": "https://www.warrenphotographic.co.uk/photography/sqrs/17693.jpg"}
-            cursor.execute(f"INSERT INTO animales (nombre, especie, raza, provincia, municipio, localidad, calle, numero, foto) VALUES ('{nombre}', '{especie}', '{raza}', '{provincia}', '{municipio}', '{localidad}', '{calle}', '{numero}', '{foto}')")
+            cursor.execute(f"INSERT INTO animales (creado_por, nombre, especie, raza, provincia, municipio, localidad, calle, numero, foto) VALUES ('{creado_por}','{nombre}', '{especie}', '{raza}', '{provincia}', '{municipio}', '{localidad}', '{calle}', '{numero}', '{foto}')")
             conn.commit()
             conn.close()
             return jsonify({'message': 'animal añadido correctamente'})
