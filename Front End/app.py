@@ -88,11 +88,17 @@ def mandar_usuario():
 
 @app.route('/perfilpropio')
 def perfilpropio():
+    id = session['user_info']['id']
+    params = {
+            'creado_por': id
+        }
+    response = requests.get('https://apianimalesperdidos.pythonanywhere.com/animales', params=params)
+    data = response.json()
     if "user_info" in session:
         nombre = session['user_info']['nombre'] + " " + session['user_info']['apellido']
         email = session['user_info']['mail']
         telefono = session['user_info']['numero']
-        return render_template('perfilpropio.html', nombre=nombre, email=email, telefono=telefono, logged_in="user_info" in session)
+        return render_template('perfilpropio.html', nombre=nombre, email=email, telefono=telefono, logged_in="user_info" in session, data=data)
     return redirect(url_for('iniciar_sesion'))
 
 @app.route('/perfilajeno')
