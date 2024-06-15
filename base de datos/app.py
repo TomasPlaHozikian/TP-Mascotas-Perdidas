@@ -240,6 +240,7 @@ def animales():
             cursor = conn.cursor()
 
             #params del request
+            creado_por = request.args.get('creado_por')
             nombre = request.args.get('nombre')
             especie = request.args.get('especie')
             raza = request.args.get('raza')
@@ -249,6 +250,8 @@ def animales():
 
             #query armada
             query = 'SELECT * FROM animales WHERE 1=1'
+            if creado_por:
+                query += f" AND creado_por='{creado_por}'"
             if nombre:
                 query += f" AND nombre='{nombre}'"
             if especie:
