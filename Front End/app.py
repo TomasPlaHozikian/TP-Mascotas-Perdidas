@@ -27,12 +27,12 @@ def resultado():
 
     response = requests.get('https://apianimalesperdidos.pythonanywhere.com/animales', params=params)
     data = response.json()
-    return render_template('resultado.html', data=data)
+    return render_template('resultado.html', data=data, logged_in="user_info" in session)
 
 
 @app.route('/busqueda')
 def buscar():
-    return render_template('buscaranimal.html')
+    return render_template('buscaranimal.html', logged_in="user_info" in session)
 
 def verifUsuario(lista_usuarios, nombre_a_buscar, contrasena_a_buscar):
     for usuario in lista_usuarios:
@@ -42,7 +42,7 @@ def verifUsuario(lista_usuarios, nombre_a_buscar, contrasena_a_buscar):
 
 @app.route('/iniciar_sesion')
 def iniciar_sesion():
-    return render_template('iniciosesion.html')
+    return render_template('iniciosesion.html', logged_in="user_info" in session)
 
 @app.route('/login', methods=["POST"])
 def login():
@@ -57,7 +57,7 @@ def login():
         print(session['user_info'])
         return redirect(url_for('home'))
 
-    return render_template('iniciosesion.html')
+    return render_template('iniciosesion.html', logged_in="user_info" in session)
 
 @app.route('/logout', methods=["POST"])
 def logout():
@@ -66,7 +66,7 @@ def logout():
 
 @app.route('/registrar_usuario')
 def registrar_usuario():
-    return render_template('registrarusuario.html')
+    return render_template('registrarusuario.html', logged_in="user_info" in session)
 
 @app.route('/mandar_usuario', methods=["POST"])
 def mandar_usuario():
@@ -90,7 +90,7 @@ def perfilpropio():
         nombre = session['user_info']['nombre'] + " " + session['user_info']['apellido']
         email = session['user_info']['mail']
         telefono = session['user_info']['numero']
-        return render_template('perfilpropio.html', nombre=nombre, email=email, telefono=telefono)
+        return render_template('perfilpropio.html', nombre=nombre, email=email, telefono=telefono, logged_in="user_info" in session)
     return redirect(url_for('iniciar_sesion'))
 
 @app.route('/perfilajeno')
@@ -102,11 +102,7 @@ def perfilajeno():
         data = "no encontrado"
     else:
         id, nombre, apellido, mail, numero, _ = data[0]
-    return render_template('perfilajeno.html', nombre=nombre, apellido=apellido, mail=mail, numero=numero)
-
-@app.route('/registar_centro')
-def registrar_centro():
-    return render_template('registrarcentro.html')
+    return render_template('perfilajeno.html', nombre=nombre, apellido=apellido, mail=mail, numero=numero, logged_in="user_info" in session)
 
 @app.route('/registrar_mascota')
 def registrar_mascota():
@@ -136,19 +132,19 @@ def cargar_mascota():
         }
         response = requests.post('https://apianimalesperdidos.pythonanywhere.com/animales', json=data)
         # Handle the response
-    return render_template('registarmascota.html')
+    return render_template('registarmascota.html', logged_in="user_info" in session)
 
 @app.route ('/quienes_somos')
 def quienes_somos():
-    return render_template('quienes_somos.html')
+    return render_template('quienes_somos.html', logged_in="user_info" in session)
 
 @app.route('/preguntas_frecuentes')
 def preguntas_frecuentes():
-    return render_template('preguntas_frecuentes.html')
+    return render_template('preguntas_frecuentes.html', logged_in="user_info" in session)
 
 @app.route ('/contacto')
 def contacto():
-    return render_template('contacto.html')
+    return render_template('contacto.html', logged_in="user_info" in session)
 
 if __name__ == '__main__':
     app.run(debug=True, host='127.0.0.1', port=5001)
