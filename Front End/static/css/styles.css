@@ -51,15 +51,21 @@ header{
     padding: 10px 3%;
     justify-content: center;
     align-items: center;
+    border-radius: 15px;
+}
+
+.cardContainer .card 
+{
+    margin-bottom: 40px;
 }
 
 .card {
     display:flex;
     justify-content: center;
     background: rgb(255, 255, 255);
-    border: 2px solid rgb(242, 247, 199);
+    border: 2px solid rgb(8, 142, 13);
     border-width: 10px;    
-    border-radius: 10px;
+    border-radius: 15px;
     margin: 10px;
     padding: 5px 20px 5px;
     flex-wrap: wrap;
@@ -88,9 +94,19 @@ header{
 }
 
 .textoCarta h2{
-  font-size: 2rem;
-  margin-bottom: 20px;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 10px;
 }
+
+.textoCarta p
+{
+    text-align: left;
+    font-size: 25px;
+    margin-top: 10px;
+}
+
 
 footer{
   position: sticky;
@@ -262,6 +278,29 @@ footer>p{
     margin: 10px 0; 
 }
 
+.Miperfil h2
+{
+    text-align: center;
+    font-size: 40px;
+    margin-top: 50px;
+    margin-bottom: 15px;
+}
+
+.Miperfil .info-perfil button
+{
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    background-color: #34db6e;
+    color: white;
+    border: 2px solid #e6f0f1;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    cursor: pointer;
+}
+
 /*PERFIL AJENO*/
 
 .PA
@@ -336,6 +375,17 @@ footer>p{
   max-width: 180px; 
   height: 180px;
   margin-bottom: 10px;
+  margin-top: 50px;
+  border: 6px solid #528f23;
+  border-radius: 6px;
+}
+
+.Titulo_animal h1 
+{
+    text-align: center;
+    font-size: 55px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 10px;
 }
 
 .mapouter .gmap_canvas
@@ -358,8 +408,9 @@ footer>p{
 
 .Info h1 {
     color: #333;
-    font-size: 24px;
-    margin-bottom: 20px;
+    font-size: 35px;
+    margin-bottom: 40px;
+    margin-top: 10px;
 }
 
 .Info p {
@@ -477,9 +528,10 @@ footer>p{
 
 .titulocentro h1
 {
-  font-family: Comic sans-serif;
-  font-size: 30px;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 50px;
   text-align: center;
+  margin-bottom: 20px;
 }
 
 .centrosBox{
