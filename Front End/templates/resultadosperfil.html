@@ -21,7 +21,12 @@
                     <style>.gmap_canvas{overflow: hidden;background: none !important;height: 300px;width: 400px;}</style>
                 </div>
             </div>
+            <form action="https://apianimalesperdidos.pythonanywhere.com/borrar_animal/{{ animal[2] | urlencode }}" method="post">
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit">Delete</button>
+            </form>
         </div>
+
     {% endfor %}
 </div>
 
