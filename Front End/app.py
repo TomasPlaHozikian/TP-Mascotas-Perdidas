@@ -12,9 +12,7 @@ def home():
     response2 = requests.get('https://apianimalesperdidos.pythonanywhere.com/usuarios')
     data = response.json()
     data2 = response2.json()
-    if "user" in session:
-        return render_template('home.html', data=data, data2=data2, logged_in=True)
-    return render_template('home.html', data=data, data2=data2)
+    return render_template('home.html', data=data, data2=data2, logged_in="user_info" in session)
 
 @app.route('/resultado', methods=['GET', 'POST'])
 def resultado():
@@ -57,13 +55,13 @@ def login():
     if logged_in_user is not None:
         session['user_info'] = logged_in_user
         print(session['user_info'])
-        return redirect(url_for('perfilpropio'))
+        return redirect(url_for('home'))
 
     return render_template('iniciosesion.html')
 
 @app.route('/logout', methods=["POST"])
 def logout():
-    session.pop('user', None)
+    session.pop('user_info', None)
     return redirect(url_for('home'))
 
 @app.route('/registrar_usuario')
@@ -125,6 +123,7 @@ def ver_centro():
 def cargar_mascota():
     if request.method == 'POST':
         data = {
+            'creado_por': session['user_info']['id'],
             'nombre': request.form.get('fname'),
             'especie': request.form.get('fespecie'),
             'raza': request.form.get('fraza'),
