@@ -7,18 +7,24 @@ import mysql.connector
 
 app = Flask(__name__)
 
-"""
 def set_connection():
-    conn = create_engine('mysql+mysqlconnector://root:test@localhost/tp')
-    connection = conn.connect()
-    return connection
-"""
+    conn = mysql.connector.connect(
+        user='APIAnimalesperdi',
+        password='PruebadbIntro',
+        host='APIAnimalesperdidos.mysql.pythonanywhere-services.com',
+        database='APIAnimalesperdi$tp')
+    return conn
 
 
+def show_animales():
+    conn = set_connection()
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM animales')
+    result = cursor.fetchall()
+    conn.close()
+    return result
 
-@app.route('/')
-def index():
-    return render_template('index.html')
+
 
 @app.route('/refugios', methods=['GET','POST'])
 def refugios():
@@ -84,6 +90,7 @@ def borrar_refugio(nombre):
         return str(e)
 
 
+
 @app.route('/modificar_refugio/<nombre>', methods=['PATCH'])
 def modificar_refugio(nombre):
     try:
@@ -102,32 +109,6 @@ def modificar_refugio(nombre):
 
 
 
-@app.route('/cargaranimal')
-def cargaranimal():
-    return render_template('cargaranimal.html')
-
-@app.route('/cargarusuario')
-def cargarusuario():
-    return render_template('cargarusuario.html')
-
-def set_connection():
-    conn = mysql.connector.connect(
-        user='APIAnimalesperdi',
-        password='PruebadbIntro',
-        host='APIAnimalesperdidos.mysql.pythonanywhere-services.com',
-        database='APIAnimalesperdi$tp')
-    return conn
-
-
-def show_animales():
-    conn = set_connection()
-    cursor = conn.cursor()
-    cursor.execute('SELECT * FROM animales')
-    result = cursor.fetchall()
-    conn.close()
-    return result
-
-
 @app.route('/getanimales', methods=['GET'])
 def get_animales():
     try:
@@ -139,6 +120,9 @@ def get_animales():
         return jsonify(result)
     except SQLAlchemyError as e:
         return str(e)
+
+
+
 
 @app.route('/usuarios', methods=['GET'])
 def get_usuarios():
@@ -154,6 +138,9 @@ def get_usuarios():
     except SQLAlchemyError as e:
         return str(e)
 
+
+
+
 @app.route('/obtener_usuario_particular/<id>', methods=['GET'])
 def get_usuario_particular(id):
     try:
@@ -165,6 +152,7 @@ def get_usuario_particular(id):
         return jsonify(result)
     except SQLAlchemyError as e:
         return str(e)
+
 
 
 #luego se utilizara fetch mediante javascript para recibir datos del html en formato json,
@@ -186,6 +174,8 @@ def cargar_animal():
         return 'Animal inserted successfully'
     except SQLAlchemyError as e:
         return str(e)
+
+
 
 @app.route('/usuarioscargar', methods=['POST'])
 def cargar_usuario():
@@ -227,6 +217,7 @@ def cargar_usuario():
 
     except SQLAlchemyError as e:
         return str(e)
+
 
 
 @app.route('/animales', methods=['GET','POST'])
@@ -285,8 +276,6 @@ def animales():
             numero = nuevo_animal['numero']
             foto = nuevo_animal['foto']
         # insertar valores en la tabla
-        #{ "direccion" : "calzada", "nombre": "polideportivo" }
-        #{"nombre": "Jorge", "especie" : "Gato", "raza" : "Calle", "provincia": "Buenos Aires", "municipio": "Lanus", "localidad": "Valentin Alsina", "calle": "Paraguay", "numero": "3254", "foto": "https://www.warrenphotographic.co.uk/photography/sqrs/17693.jpg"}
             cursor.execute(f"INSERT INTO animales (creado_por, nombre, especie, raza, provincia, municipio, localidad, calle, numero, foto) VALUES ('{creado_por}','{nombre}', '{especie}', '{raza}', '{provincia}', '{municipio}', '{localidad}', '{calle}', '{numero}', '{foto}')")
             conn.commit()
             conn.close()
@@ -294,6 +283,8 @@ def animales():
         except SQLAlchemyError as e:
             return str(e)
         
+
+
 @app.route('/borrar_animal/<id>', methods=['POST'])
 def borrar_animal(id):
     if request.form.get('_method') == 'DELETE':
@@ -308,6 +299,8 @@ def borrar_animal(id):
             return jsonify({'message': 'Animal eliminado correctamente'}), 200
         except SQLAlchemyError as e:
             return str(e)
+
+
 
 if __name__ == '__main__':
     app.run()
