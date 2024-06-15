@@ -108,13 +108,13 @@ def perfilajeno():
 
 @app.route('/registrar_mascota')
 def registrar_mascota():
-    return render_template('registarmascota.html')
+    return render_template('registarmascota.html', logged_in="user_info" in session)
       
 @app.route ('/vercentro')
 def ver_centro():
     response = requests.get('https://apianimalesperdidos.pythonanywhere.com/refugios')
     data = response.json()
-    return render_template('mostrarcentro.html', data = data)
+    return render_template('mostrarcentro.html', data = data, logged_in="user_info" in session)
 
 
 @app.route('/cargar_mascota', methods=['GET', 'POST'])
