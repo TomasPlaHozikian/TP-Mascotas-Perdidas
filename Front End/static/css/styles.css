@@ -461,9 +461,16 @@ footer>p{
 
 /*VER CENTRO*/
 
+.titulocentro {
+    margin: 20px;
+    padding: 10px;
+}
+
 .titulocentro h1
 {
   font-family: Comic sans-serif;
+  font-size: 30px;
+  text-align: center;
 }
 
 .centrosBox{
@@ -555,4 +562,20 @@ footer>p{
 
 .contacto tr:first-child {
     border-top: 2px solid #333333;
+}
+
+.error_handler {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 200px;
+}
+
+.error_handler h1 {
+    font-size: 50px;
+}
+
+.error_handler p {
+    font-size: 24px;
 }

@@ -154,5 +154,14 @@ def preguntas_frecuentes():
 def contacto():
     return render_template('contacto.html', logged_in="user_info" in session)
 
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template("404.html"), 404
+
+@app.errorhandler(500)
+def error_en_el_servidor(e):
+    return render_template("500.html"), 500
+
+
 if __name__ == '__main__':
     app.run(debug=True, host='127.0.0.1', port=5001)
