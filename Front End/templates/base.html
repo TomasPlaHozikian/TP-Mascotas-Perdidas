@@ -2,6 +2,7 @@
 <html>
 
 <head>
+  <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/x-icon">
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/reset.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
 
@@ -41,7 +42,6 @@
       <a href="{{ url_for('home') }}"><img class="logoFooter"
           src="{{ url_for('static', filename='/images/logo.png')}}"></a>
       <ul>
-        <li><a href="#">Encontré una Mascota</a></li>
         <li><a href="{{url_for('buscar')}}">Busco a mi Mascota</a></li>
         <li><a href="{{url_for('ver_centro')}}">Mostrar Centros</a></li>
       </ul>
@@ -49,7 +49,6 @@
         <li><a href="{{url_for('quienes_somos')}}">Quienes somos</a></li>
         <li><a href="{{url_for('contacto')}}">Contacto</a></li>
         <li><a href="{{url_for('preguntas_frecuentes')}}">Preguntas Frecuentes</a></li>
-        <li><a href="#">Trabaje con Nosotros</a></li>
       </ul>
     </div>
     <hr>
