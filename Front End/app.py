@@ -82,6 +82,10 @@ def mandar_usuario():
         NUJson = NuevoUsuario.json()
         print(NUJson["id"])
         if NUJson["id"] == 1:
+            usuarios = requests.get('https://apianimalesperdidos.pythonanywhere.com/usuarios')
+            logged_in_user = verifUsuario(usuarios.json(), nombre, password)
+            if logged_in_user is not None:
+                session['user_info'] = logged_in_user
             return redirect(url_for('perfilpropio', nombre=nombre, email=email, telefono=telefono))
         else:
             return redirect(url_for('registrar_usuario'))
