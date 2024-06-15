@@ -229,9 +229,6 @@ def cargar_usuario():
         return str(e)
 
 
-
-
-
 @app.route('/animales', methods=['GET','POST'])
 def animales():
     if request.method == 'GET':
@@ -294,6 +291,21 @@ def animales():
             conn.commit()
             conn.close()
             return jsonify({'message': 'animal añadido correctamente'})
+        except SQLAlchemyError as e:
+            return str(e)
+        
+@app.route('/borrar_animal/<id>', methods=['POST'])
+def borrar_animal(id):
+    if request.form.get('_method') == 'DELETE':
+        try:
+            conn = set_connection()
+            cursor = conn.cursor()
+            # eliminar valores en la tabla
+            #cursor.execute(f"SELECT nombre FROM animales WHERE nombre='{nombre}'")
+            cursor.execute(f"DELETE FROM animales WHERE id='{id}'")
+            conn.commit()
+            conn.close()
+            return jsonify({'message': 'Animal eliminado correctamente'}), 200
         except SQLAlchemyError as e:
             return str(e)
 
