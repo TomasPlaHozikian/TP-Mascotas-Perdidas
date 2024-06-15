@@ -16,6 +16,8 @@ def home():
 
 @app.route('/resultado', methods=['GET', 'POST'])
 def resultado():
+    response2 = requests.get('https://apianimalesperdidos.pythonanywhere.com/usuarios')
+    data2 = response2.json()
     params = {
             'nombre': request.form.get('fnombre'),
             'especie': request.form.get('fespecie'),
@@ -27,7 +29,7 @@ def resultado():
 
     response = requests.get('https://apianimalesperdidos.pythonanywhere.com/animales', params=params)
     data = response.json()
-    return render_template('resultado.html', data=data, logged_in="user_info" in session)
+    return render_template('resultado.html', data=data, logged_in="user_info" in session, data2=data2)
 
 
 @app.route('/busqueda')
