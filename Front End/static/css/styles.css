@@ -1,6 +1,9 @@
 body {
     background-image: url('/static/images/background.jpg');
     font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 
@@ -121,7 +124,7 @@ header{
 
 footer{
   position: sticky;
-  margin-top: 5%;
+  margin-top: 20%;
   background: #4CAF50;
   padding: 30px 50px;
   display: flex;
