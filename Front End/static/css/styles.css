@@ -51,21 +51,23 @@ header{
     padding: 10px 3%;
     justify-content: center;
     align-items: center;
-    border-radius: 15px;
 }
 
 .cardContainer .card 
 {
     margin-bottom: 40px;
+    border: 2px solid rgba(8, 142, 13, 0.5);
+    background-color: rgba(190, 243, 192, 0.9);
+    border-radius: 1; /* Remove the border-radius property */
 }
 
 .card {
     display:flex;
     justify-content: center;
     background: rgb(255, 255, 255);
-    border: 2px solid rgb(8, 142, 13);
+    border: 2px solid rgba(8, 142, 13, 0.5);
     border-width: 10px;    
-    border-radius: 15px;
+    border-radius: 10px;
     margin: 10px;
     padding: 5px 20px 5px;
     flex-wrap: wrap;
@@ -91,6 +93,15 @@ header{
 }
 .textoCarta{
     margin: 30px;
+    max-width: 80%;
+    word-break: break-all;
+    overflow-wrap: break-word;
+}
+
+@media screen and (min-width: 768px) {
+    .textoCarta {
+        max-width: 80%;
+    }
 }
 
 .textoCarta h2{
@@ -103,8 +114,8 @@ header{
 .textoCarta p
 {
     text-align: left;
-    font-size: 25px;
-    margin-top: 10px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 
@@ -178,7 +189,13 @@ footer>p{
     padding: 40px;
     background-color: #4CAF50;
     border-radius: 32px;
-    max-width: 300px; 
+    max-width: 300px;
+}
+
+.form_iniciar_sesion input:not([type="file"]) {
+    border-radius: 20px;
+    border-color: transparent;
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
 .form_iniciar_sesion div {
@@ -376,7 +393,7 @@ footer>p{
   height: 180px;
   margin-bottom: 10px;
   margin-top: 50px;
-  border: 6px solid #528f23;
+  border: 2px solid rgba(8, 142, 13, 0.5);
   border-radius: 6px;
 }
 

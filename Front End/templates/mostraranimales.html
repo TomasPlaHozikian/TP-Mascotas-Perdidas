@@ -1,7 +1,7 @@
 {% block content %}
 
 <div class="Titulo_animal">
-    <h1>Animales en búsqueda:</h1>
+    <h1>Mascotas perdidas</h1>
 </div>
 
 <br>
@@ -12,7 +12,7 @@
             <img class="imagenAnimal" src="{{ animal[10] }}">
 
             <div class="textoCarta">
-                <h2><strong>Nombre del animal:</strong> {{animal[2]}}</h2>
+                <h2><strong>Nombre de la mascota:</strong> {{animal[2]}}</h2>
                 <p>Dueño: <a href="/perfilajeno?id={{ animal[1] }}">{{ data2[animal[1]-1]['nombre'] }}</a></p>
                 <p>Se perdió en los alrededores de: {{ animal[7] }}</p>
                 <p>Especie: {{ animal[3] }}</p>
