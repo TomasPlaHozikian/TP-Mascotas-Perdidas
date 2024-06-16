@@ -44,7 +44,7 @@ def verifUsuario(lista_usuarios, nombre_a_buscar, contrasena_a_buscar):
 
 @app.route('/iniciar_sesion')
 def iniciar_sesion():
-    return render_template('iniciosesion.html', logged_in="user_info" in session)
+    return render_template('iniciosesion.html', logged_in="user_info" in session, error="")
 
 @app.route('/login', methods=["POST"])
 def login():
@@ -53,13 +53,13 @@ def login():
     usuarios = requests.get('https://apianimalesperdidos.pythonanywhere.com/usuarios')
 
     logged_in_user = verifUsuario(usuarios.json(), user, password)
-
+    error=""
     if logged_in_user is not None:
         session['user_info'] = logged_in_user
         print(session['user_info'])
         return redirect(url_for('home'))
 
-    return render_template('iniciosesion.html', logged_in="user_info" in session)
+    return render_template('iniciosesion.html', logged_in="user_info" in session, error="Usuario o contraseña incorrectos")
 
 @app.route('/logout', methods=["POST"])
 def logout():

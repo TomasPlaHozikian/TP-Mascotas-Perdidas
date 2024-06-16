@@ -2,10 +2,13 @@
 
 {% block title %} iniciar sesion {% endblock %}
 
+
+
 {% block content %}
 
 
 <div class="iniciar_sesion">
+    
     <form action="/login" method="POST" class="form_iniciar_sesion">
         <div>
             <label for="username">Nombre de usuario</label>
@@ -14,6 +17,7 @@
             <input type="password" name="password" id="password" required/>
         </div>
         <input class="boton" type="submit" value="Iniciar sesión">
+        <h1 style="color: red;">{{error}}</h1>
         <a href="{{ url_for('registrar_usuario') }}">Crear cuenta nueva</a>
     </form>
 </div>
