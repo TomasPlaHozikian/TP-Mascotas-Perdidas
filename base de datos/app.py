@@ -88,30 +88,13 @@ def modificar_refugio(nombre):
         modificaciones = request.get_json()
         conn = set_connection()
         cursor = conn.cursor()
-
         for modificacion in modificaciones:
             cursor.execute(f"UPDATE centros SET {modificacion}='{modificaciones[modificacion]}' WHERE nombre='{nombre}'")
-
         conn.commit()
         conn.close()
         return jsonify({'message': 'Refugio modificado correctamente'})
     except SQLAlchemyError as e:
         return str(e)
-
-
-
-@app.route('/getanimales', methods=['GET'])
-def get_animales():
-    try:
-        conn = set_connection()
-        cursor = conn.cursor()
-        cursor.execute('SELECT * FROM animales')
-        result = cursor.fetchall()
-        conn.close()
-        return jsonify(result)
-    except SQLAlchemyError as e:
-        return str(e)
-
 
 
 
@@ -129,21 +112,6 @@ def get_usuarios():
     except SQLAlchemyError as e:
         return str(e)
     
-@app.route('/obtener_usuario_particular/<id>', methods=['GET'])
-def get_usuario_particular(id):
-    try:
-        conn = set_connection()
-        cursor = conn.cursor()
-        cursor.execute(f"SELECT * FROM usuarios WHERE id='{id}'")
-        result = cursor.fetchall()
-        conn.close()
-        return jsonify(result)
-    except SQLAlchemyError as e:
-        return str(e)
-
-
-
-
 @app.route('/obtener_usuario_particular/<id>', methods=['GET'])
 def get_usuario_particular(id):
     try:
