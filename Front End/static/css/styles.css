@@ -1,6 +1,9 @@
 body {
     background-image: url('/static/images/background.jpg');
     font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 
@@ -12,6 +15,11 @@ header{
     background-color: lightgreen;
     background: #4CAF50;
     margin-bottom: 5%;
+}
+
+.logoClick{
+    display: flex;
+    align-items: center;
 }
 
 .logo{
@@ -48,11 +56,19 @@ header{
     align-items: center;
 }
 
+.cardContainer .card 
+{
+    margin-bottom: 40px;
+    border: 2px solid rgba(8, 142, 13, 0.5);
+    background-color: rgba(190, 243, 192, 0.9);
+    border-radius: 1; /* Remove the border-radius property */
+}
+
 .card {
     display:flex;
     justify-content: center;
     background: rgb(255, 255, 255);
-    border: 2px solid rgb(242, 247, 199);
+    border: 2px solid rgba(8, 142, 13, 0.5);
     border-width: 10px;    
     border-radius: 10px;
     margin: 10px;
@@ -80,15 +96,35 @@ header{
 }
 .textoCarta{
     margin: 30px;
+    max-width: 80%;
+    word-break: break-all;
+    overflow-wrap: break-word;
+}
+
+@media screen and (min-width: 768px) {
+    .textoCarta {
+        max-width: 80%;
+    }
 }
 
 .textoCarta h2{
-  font-size: 2rem;
-  margin-bottom: 20px;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 10px;
 }
 
+.textoCarta p
+{
+    text-align: left;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+
 footer{
-  margin-top: 5%;
+  position: sticky;
+  margin-top: 20%;
   background: #4CAF50;
   padding: 30px 50px;
   display: flex;
@@ -156,7 +192,13 @@ footer>p{
     padding: 40px;
     background-color: #4CAF50;
     border-radius: 32px;
-    max-width: 300px; 
+    max-width: 300px;
+}
+
+.form_iniciar_sesion input:not([type="file"]) {
+    border-radius: 20px;
+    border-color: transparent;
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
 .form_iniciar_sesion div {
@@ -256,6 +298,29 @@ footer>p{
     margin: 10px 0; 
 }
 
+.Miperfil h2
+{
+    text-align: center;
+    font-size: 40px;
+    margin-top: 50px;
+    margin-bottom: 15px;
+}
+
+.Miperfil .info-perfil button
+{
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    background-color: #34db6e;
+    color: white;
+    border: 2px solid #e6f0f1;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    cursor: pointer;
+}
+
 /*PERFIL AJENO*/
 
 .PA
@@ -298,10 +363,19 @@ footer>p{
 }
 
 .perfil-ajeno p {
-    font-size: 16px;
+    font-size: 24px;
     color: #666;
     margin-bottom: 10px;
     text-align: right;
+    display: inline;
+}
+
+.info-ajeno {
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
 }
 
 .footer {
@@ -321,6 +395,17 @@ footer>p{
   max-width: 180px; 
   height: 180px;
   margin-bottom: 10px;
+  margin-top: 50px;
+  border: 2px solid rgba(8, 142, 13, 0.5);
+  border-radius: 6px;
+}
+
+.Titulo_animal h1 
+{
+    text-align: center;
+    font-size: 55px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 10px;
 }
 
 .mapouter .gmap_canvas
@@ -343,8 +428,9 @@ footer>p{
 
 .Info h1 {
     color: #333;
-    font-size: 24px;
-    margin-bottom: 20px;
+    font-size: 35px;
+    margin-bottom: 40px;
+    margin-top: 10px;
 }
 
 .Info p {
@@ -455,9 +541,17 @@ footer>p{
 
 /*VER CENTRO*/
 
+.titulocentro {
+    margin: 20px;
+    padding: 10px;
+}
+
 .titulocentro h1
 {
-  font-family: Comic sans-serif;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 50px;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .centrosBox{
@@ -549,4 +643,46 @@ footer>p{
 
 .contacto tr:first-child {
     border-top: 2px solid #333333;
+}
+
+.error_handler {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 200px;
+}
+
+.error_handler h1 {
+    font-size: 50px;
+}
+
+.error_handler p {
+    font-size: 24px;
+}
+
+#eliminar{
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+#logout{
+    background-color:#6fc0a8;
+    border: none;
+    color: white;
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
 }

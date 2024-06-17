@@ -1,19 +1,22 @@
 {% extends 'base.html' %}
 
+{% block title %} Perfil de {{ nombre }} {% endblock %}
+
 {% block content %}
 
 <div class="PA">
-    <div class="imagen-ajeno">
-        <img src="{{url_for('static', filename='images/perfil.png')}}">
-    </div>
     
     <div class="perfil-ajeno">
-        <h1>Perfil de : {{nombre}}</h1>
+        <h1>Perfil de : {{nombre}} {{apellido}}</h1>
         <div class="info-ajeno">
-            <label for="email">Email:</label>
-            <p id="nombre">{{email}}</p>
-            <label for="telefono">Telefono:</label>
-            <p id="telefono">{{telefono}}</p>
+            <div>
+                <label for="email">Email:</label>
+                <p id="nombre">{{mail}}</p>
+            </div>
+            <div>
+                <label for="telefono">Telefono:</label>
+                <p id="telefono">{{numero}}</p>
+            </div>
         </div>
     </div>
 </div>

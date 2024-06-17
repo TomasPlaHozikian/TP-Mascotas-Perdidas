@@ -2,26 +2,30 @@
 <html>
 
 <head>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/reset.css') }}"> 
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
-
+  <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/x-icon">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/reset.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+  <title>Mascotas Perdidas | {% block title %}{% endblock %}</title>
 </head>
 
 <body>
 
   <header>
     <a class="logoClick" href="{{ url_for('home') }}"><img class="logo"
-        src="{{ url_for('static', filename='/images/logo.png')}}"></a>
-    <div class="titulopagina">
-      <img src="{{url_for('static', filename = 'images/titulo1.png')}}">
-    </div>
-        <div class="headerButtons">
-            <a class="Button" id="buscar" href="busqueda" >Busco a mi mascota</a>
-            <a class="Button" id="registrar_mascota" href="{{ url_for('registrar_mascota') }}" >Registrar mascota</a>
-            <a class="Button" id="centros" href="{{url_for('ver_centro')}}">Mostrar Centros</a>
-            <a class="Button" id="centros" href="{{url_for('registrar_centro')}}">Registrar Centro</a>
-            <a class="Button" id="login" href="{{ url_for('iniciar_sesion') }}">Log In</a>
-            <a class="Button" id="perfil" href="{{ url_for('perfil') }}">Ver perfil</a>
+        src="{{ url_for('static', filename='/images/logo.png')}}">
+      <div class="titulopagina">
+        <img src="{{url_for('static', filename = 'images/titulo1.png')}}">
+      </div>
+    </a>
+    <div class="headerButtons">
+      <a class="Button" id="buscar" href="busqueda">Buscar mascota</a>
+      <a class="Button" id="centros" href="{{url_for('ver_centro')}}">Mostrar Centros</a>
+      {% if logged_in %}
+      <a class="Button" id="registrar_mascota" href="{{ url_for('registrar_mascota') }}">Registrar mascota</a>
+      <a class="Button" id="perfil" href="{{ url_for('perfilpropio') }}">Ver perfil</a>
+      {% else %}
+      <a class="Button" id="login" href="{{ url_for('iniciar_sesion') }}">Log In</a>
+      {% endif %}
     </div>
   </header>
   <main>
@@ -35,18 +39,16 @@
   </main>
   <footer>
     <div class="footerContent">
-      <a href="{{ url_for('home') }}"><img class="logoFooter" src="{{ url_for('static', filename='/images/logo.png')}}"></a>
+      <a href="{{ url_for('home') }}"><img class="logoFooter"
+          src="{{ url_for('static', filename='/images/logo.png')}}"></a>
       <ul>
-        <li><a href="#">Encontré una Mascota</a></li>
         <li><a href="{{url_for('buscar')}}">Busco a mi Mascota</a></li>
         <li><a href="{{url_for('ver_centro')}}">Mostrar Centros</a></li>
-        <li><a href="{{url_for('registrar_centro')}}">Registrar Centros</a></li>
       </ul>
       <ul>
         <li><a href="{{url_for('quienes_somos')}}">Quienes somos</a></li>
         <li><a href="{{url_for('contacto')}}">Contacto</a></li>
         <li><a href="{{url_for('preguntas_frecuentes')}}">Preguntas Frecuentes</a></li>
-        <li><a href="#">Trabaje con Nosotros</a></li>
       </ul>
     </div>
     <hr>
