@@ -146,7 +146,11 @@ def cargar_animal():
     except SQLAlchemyError as e:
         return str(e)
 
-
+def verifNombre(lista_usuarios, nombre_a_buscar):
+    for usuario in lista_usuarios:
+        if usuario["nombre"].lower() == nombre_a_buscar.lower():
+            return True
+    return False
 
 @app.route('/usuarioscargar', methods=['POST'])
 def cargar_usuario():
@@ -167,18 +171,15 @@ def cargar_usuario():
         column_names = [desc[0] for desc in cursor.description]
         result = [dict(zip(column_names, row)) for row in rows]
         # busca la lista de usuarios para ver si existe
-        def verifNombre(lista_usuarios, nombre_a_buscar):
-            for usuario in lista_usuarios:
-                if usuario["nombre"].lower() == nombre_a_buscar.lower():
-                    return True
-            return False
         if verifNombre(result,nombre) is False:
             cursor.execute(f"INSERT INTO usuarios (nombre, apellido, mail, numero, contrasena) VALUES ('{nombre}', '{apellido}', '{mail}', '{numero}', '{contrasena}')")
             conn.commit()
             conn.close()
-            return jsonify({"message":"User inserted successfully","id":1})
+            return jsonify({"message":"Usuario insertado","id":1})
         else:
-            return jsonify({"message": "ese usuario ya existe", "id": 2})
+            conn.commit()
+            conn.close()
+            return jsonify({"message": "Ese usuario ya existe", "id": 2})
     except SQLAlchemyError as e:
         return str(e)
 
