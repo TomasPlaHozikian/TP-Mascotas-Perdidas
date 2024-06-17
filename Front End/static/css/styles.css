@@ -172,6 +172,40 @@ footer hr{
 footer>p{
   opacity: 0.5;
 }
+/*Bienvenida*/
+
+.bienvenida
+{
+    margin-bottom: 40px;
+    background-color: #0c4710a3; 
+    border: 2px solid #ccc; 
+    border-radius: 20px; 
+    justify-content: center;
+    text-align: center;
+    margin: 20px auto;
+    max-width: 1200px;
+    padding: 20px;
+}
+
+.bienvenida h1
+{
+    font-family: 'Arial', sans-serif; 
+    font-size: 40px; 
+    color: #ffffff; 
+    text-align: center; 
+    margin-top: 50px; 
+    margin-bottom: 30px; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); 
+
+}
+
+.bienvenida h2 
+{
+    font-size: 30px;
+    color: #ffffff;
+    margin-bottom: 10px;
+    text-align: center;
+}
 
 /* inicio sesion */
 
@@ -403,9 +437,10 @@ footer>p{
 .Titulo_animal h1 
 {
     text-align: center;
-    font-size: 55px;
+    font-size: 40px;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin-bottom: 10px;
+    margin-top: 50px;
 }
 
 .mapouter .gmap_canvas
