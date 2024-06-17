@@ -7,18 +7,24 @@ import mysql.connector
 
 app = Flask(__name__)
 
-"""
 def set_connection():
-    conn = create_engine('mysql+mysqlconnector://root:test@localhost/tp')
-    connection = conn.connect()
-    return connection
-"""
+    conn = mysql.connector.connect(
+        user='APIAnimalesperdi',
+        password='PruebadbIntro',
+        host='APIAnimalesperdidos.mysql.pythonanywhere-services.com',
+        database='APIAnimalesperdi$tp')
+    return conn
 
 
+def show_animales():
+    conn = set_connection()
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM animales')
+    result = cursor.fetchall()
+    conn.close()
+    return result
 
-@app.route('/')
-def index():
-    return render_template('index.html')
+
 
 @app.route('/refugios', methods=['GET','POST'])
 def refugios():
@@ -84,6 +90,7 @@ def borrar_refugio(nombre):
         return str(e)
 
 
+
 @app.route('/modificar_refugio/<nombre>', methods=['PATCH'])
 def modificar_refugio(nombre):
     try:
@@ -93,39 +100,13 @@ def modificar_refugio(nombre):
 
         for modificacion in modificaciones:
             cursor.execute(f"UPDATE centros SET {modificacion}='{modificaciones[modificacion]}' WHERE nombre='{nombre}'")
-        
+
         conn.commit()
         conn.close()
         return jsonify({'message': 'Refugio modificado correctamente'})
     except SQLAlchemyError as e:
         return str(e)
 
-
-
-@app.route('/cargaranimal')
-def cargaranimal():
-    return render_template('cargaranimal.html')
-
-@app.route('/cargarusuario')
-def cargarusuario():
-    return render_template('cargarusuario.html')
-
-def set_connection():
-    conn = mysql.connector.connect(
-        user='root',
-        password='test',
-        host='localhost',
-        database='tp')
-    return conn
-
-
-def show_animales():
-    conn = set_connection()
-    cursor = conn.cursor()
-    cursor.execute('SELECT * FROM animales')
-    result = cursor.fetchall()
-    conn.close()
-    return result
 
 
 @app.route('/getanimales', methods=['GET'])
@@ -139,7 +120,10 @@ def get_animales():
         return jsonify(result)
     except SQLAlchemyError as e:
         return str(e)
-    
+
+
+
+
 @app.route('/usuarios', methods=['GET'])
 def get_usuarios():
     try:
@@ -167,6 +151,22 @@ def get_usuario_particular(id):
         return str(e)
 
 
+
+
+@app.route('/obtener_usuario_particular/<id>', methods=['GET'])
+def get_usuario_particular(id):
+    try:
+        conn = set_connection()
+        cursor = conn.cursor()
+        cursor.execute(f"SELECT * FROM usuarios WHERE id='{id}'")
+        result = cursor.fetchall()
+        conn.close()
+        return jsonify(result)
+    except SQLAlchemyError as e:
+        return str(e)
+
+
+
 #luego se utilizara fetch mediante javascript para recibir datos del html en formato json,
 #se añadira un event listener al submit del form que recibira los datos y los parseara a json.
 @app.route('/animalescargar', methods=['POST'])
@@ -186,6 +186,8 @@ def cargar_animal():
         return 'Animal inserted successfully'
     except SQLAlchemyError as e:
         return str(e)
+
+
 
 @app.route('/usuarioscargar', methods=['POST'])
 def cargar_usuario():
@@ -224,11 +226,9 @@ def cargar_usuario():
             return jsonify({"message":"User inserted successfully","id":1})
         else:
             return jsonify({"message": "ese usuario ya existe", "id": 2})
-        
+
     except SQLAlchemyError as e:
         return str(e)
-
-
 
 
 
@@ -240,6 +240,7 @@ def animales():
             cursor = conn.cursor()
 
             #params del request
+            creado_por = request.args.get('creado_por')
             nombre = request.args.get('nombre')
             especie = request.args.get('especie')
             raza = request.args.get('raza')
@@ -249,6 +250,8 @@ def animales():
 
             #query armada
             query = 'SELECT * FROM animales WHERE 1=1'
+            if creado_por:
+                query += f" AND creado_por='{creado_por}'"
             if nombre:
                 query += f" AND nombre='{nombre}'"
             if especie:
@@ -261,9 +264,11 @@ def animales():
                 query += f" AND municipio='{municipio}'"
             if localidad:
                 query += f" AND localidad='{localidad}'"
-            
+
             cursor.execute(query)
-            result = cursor.fetchall()
+            rows = cursor.fetchall()
+            column_names = [desc[0] for desc in cursor.description]
+            result = [dict(zip(column_names, row)) for row in rows]
             conn.close()
             return jsonify(result)
         except SQLAlchemyError as e:
@@ -274,6 +279,7 @@ def animales():
             cursor = conn.cursor()
         # conseguir valores mediante request
             nuevo_animal = request.get_json()
+            creado_por = nuevo_animal['creado_por']
             nombre = nuevo_animal['nombre']
             especie = nuevo_animal['especie']
             raza = nuevo_animal['raza']
@@ -284,14 +290,30 @@ def animales():
             numero = nuevo_animal['numero']
             foto = nuevo_animal['foto']
         # insertar valores en la tabla
-        #{ "direccion" : "calzada", "nombre": "polideportivo" }
-        #{"nombre": "Jorge", "especie" : "Gato", "raza" : "Calle", "provincia": "Buenos Aires", "municipio": "Lanus", "localidad": "Valentin Alsina", "calle": "Paraguay", "numero": "3254", "foto": "https://www.warrenphotographic.co.uk/photography/sqrs/17693.jpg"}
-            cursor.execute(f"INSERT INTO animales (nombre, especie, raza, provincia, municipio, localidad, calle, numero, foto) VALUES ('{nombre}', '{especie}', '{raza}', '{provincia}', '{municipio}', '{localidad}', '{calle}', '{numero}', '{foto}')")
+            cursor.execute(f"INSERT INTO animales (creado_por, nombre, especie, raza, provincia, municipio, localidad, calle, numero, foto) VALUES ('{creado_por}','{nombre}', '{especie}', '{raza}', '{provincia}', '{municipio}', '{localidad}', '{calle}', '{numero}', '{foto}')")
             conn.commit()
             conn.close()
             return jsonify({'message': 'animal añadido correctamente'})
         except SQLAlchemyError as e:
             return str(e)
+        
+
+
+@app.route('/borrar_animal/<id>', methods=['POST'])
+def borrar_animal(id):
+    if request.form.get('_method') == 'DELETE':
+        try:
+            conn = set_connection()
+            cursor = conn.cursor()
+            # eliminar valores en la tabla
+            cursor.execute(f"DELETE FROM animales WHERE id='{id}'")
+            conn.commit()
+            conn.close()
+            return jsonify({'message': 'Animal eliminado correctamente'}), 200
+        except SQLAlchemyError as e:
+            return str(e)
+
+
 
 if __name__ == '__main__':
     app.run()
