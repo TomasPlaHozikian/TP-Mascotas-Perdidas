@@ -76,48 +76,23 @@ header{
     flex-wrap: wrap;
 }
 
-.imagenPerro
-{
-    width: 300px;
-    height: 300px;
-    margin-left: 0px;
-    margin-right: 0px;
-    padding: 5px;
-    display: block;
-}
 
-.imagenMapa
-{
-    width: 300px;
-    height: 300px;
-    padding: 5px;
-    margin: 5px 20px 5px;
-    display: block;
-}
 .textoCarta{
-    margin: 30px;
-    max-width: 80%;
-    word-break: break-all;
-    overflow-wrap: break-word;
+    align-self: start;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
 }
-
-@media screen and (min-width: 768px) {
-    .textoCarta {
-        max-width: 80%;
-    }
-}
-
 .textoCarta h2{
     font-size: 2rem;
-    margin-bottom: 30px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin-top: 10px;
 }
 
 .textoCarta p
 {
     text-align: left;
-    word-wrap: break-word;
     overflow-wrap: break-word;
 }
 
@@ -411,17 +386,6 @@ footer>p{
     justify-content: space-evenly;
 }
 
-.footer {
-  margin-top: 20px;
-  text-align: center;
-}
-
-.imagencentro img
-{
-  max-width: 100%; 
-  height: auto; 
-  margin-bottom: 10px;
-}
 
 .imagenAnimal
 {
@@ -526,9 +490,6 @@ footer>p{
 }
 .preguntas_respuestas .pregunta.active {
     background-color: #e0e0e0;
-}
-.preguntas_respuestas .pregunta.active + .answer {
-    display: block;
 }
 
 .iniciar_sesion .titulo_buscar
