@@ -16,15 +16,6 @@ def set_connection():
     return conn
 
 
-def show_animales():
-    conn = set_connection()
-    cursor = conn.cursor()
-    cursor.execute('SELECT * FROM animales')
-    result = cursor.fetchall()
-    conn.close()
-    return result
-
-
 
 @app.route('/refugios', methods=['GET','POST'])
 def refugios():
@@ -201,24 +192,18 @@ def cargar_usuario():
         numero = request.form.get('numero')
         contrasena = request.form.get('contrasena')
         # insertar valores en la tabla
-
         if not all([nombre, apellido, mail, numero, contrasena]):
             return jsonify({"message": "Faltan datos", "id": 0}), 400
-
         cursor.execute('SELECT * FROM usuarios')
         rows = cursor.fetchall()
         column_names = [desc[0] for desc in cursor.description]
         result = [dict(zip(column_names, row)) for row in rows]
-
         # busca la lista de usuarios para ver si existe
         def verifNombre(lista_usuarios, nombre_a_buscar):
             for usuario in lista_usuarios:
                 if usuario["nombre"].lower() == nombre_a_buscar.lower():
                     return True
             return False
-        print(nombre)
-        print(verifNombre(result,nombre))
-
         if verifNombre(result,nombre) is False:
             cursor.execute(f"INSERT INTO usuarios (nombre, apellido, mail, numero, contrasena) VALUES ('{nombre}', '{apellido}', '{mail}', '{numero}', '{contrasena}')")
             conn.commit()
@@ -226,7 +211,20 @@ def cargar_usuario():
             return jsonify({"message":"User inserted successfully","id":1})
         else:
             return jsonify({"message": "ese usuario ya existe", "id": 2})
+    except SQLAlchemyError as e:
+        return str(e)
 
+
+
+@app.route('/borrar_usuario/<id>', methods=['DELETE'])
+def borrar_usuario(id):
+    try:
+        conn = set_connection()
+        cursor = conn.cursor()
+        cursor.execute(f"DELETE FROM usuarios WHERE id='{id}'")
+        conn.commit()
+        conn.close()
+        return jsonify({'message': 'Usuario eliminado correctamente'})
     except SQLAlchemyError as e:
         return str(e)
 
@@ -238,7 +236,6 @@ def animales():
         try:
             conn = set_connection()
             cursor = conn.cursor()
-
             #params del request
             creado_por = request.args.get('creado_por')
             nombre = request.args.get('nombre')
@@ -247,7 +244,6 @@ def animales():
             provincia = request.args.get('provincia')
             municipio = request.args.get('municipio')
             localidad = request.args.get('localidad')
-
             #query armada
             query = 'SELECT * FROM animales WHERE 1=1'
             if creado_por:
@@ -264,7 +260,6 @@ def animales():
                 query += f" AND municipio='{municipio}'"
             if localidad:
                 query += f" AND localidad='{localidad}'"
-
             cursor.execute(query)
             rows = cursor.fetchall()
             column_names = [desc[0] for desc in cursor.description]
@@ -297,6 +292,7 @@ def animales():
         except SQLAlchemyError as e:
             return str(e)
         
+
 
 
 @app.route('/borrar_animal/<id>', methods=['POST'])
