@@ -56,7 +56,6 @@ def login():
     error=""
     if logged_in_user is not None:
         session['user_info'] = logged_in_user
-        print(session['user_info'])
         return redirect(url_for('home'))
 
     return render_template('iniciosesion.html', logged_in="user_info" in session, error="Usuario o contraseña incorrectos")
@@ -80,7 +79,6 @@ def mandar_usuario():
         payload = {"nombre": nombre, "apellido": apellido, "mail": email, "numero": telefono, "contrasena": password }
         NuevoUsuario = requests.post('https://apianimalesperdidos.pythonanywhere.com/usuarioscargar', data=payload)
         NUJson = NuevoUsuario.json()
-        print(NUJson["id"])
         if NUJson["id"] == 1:
             usuarios = requests.get('https://apianimalesperdidos.pythonanywhere.com/usuarios')
             logged_in_user = verifUsuario(usuarios.json(), nombre, password)
