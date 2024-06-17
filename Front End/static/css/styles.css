@@ -56,13 +56,7 @@ header{
     align-items: center;
 }
 
-.cardContainer .card 
-{
-    margin-bottom: 40px;
-    border: 2px solid rgba(8, 142, 13, 0.5);
-    background-color: rgba(190, 243, 192, 0.9);
-    border-radius: 1; /* Remove the border-radius property */
-}
+
 
 .card {
     display:flex;
@@ -74,51 +68,27 @@ header{
     margin: 10px;
     padding: 5px 20px 5px;
     flex-wrap: wrap;
+    background-color: #4CAF50;
+
 }
 
-.imagenPerro
-{
-    width: 300px;
-    height: 300px;
-    margin-left: 0px;
-    margin-right: 0px;
-    padding: 5px;
-    display: block;
-}
-
-.imagenMapa
-{
-    width: 300px;
-    height: 300px;
-    padding: 5px;
-    margin: 5px 20px 5px;
-    display: block;
-}
 .textoCarta{
-    margin: 30px;
-    max-width: 80%;
-    word-break: break-all;
-    overflow-wrap: break-word;
-}
-
-@media screen and (min-width: 768px) {
-    .textoCarta {
-        max-width: 80%;
-    }
+    align-self: start;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
 }
 
 .textoCarta h2{
     font-size: 2rem;
-    margin-bottom: 30px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin-top: 10px;
 }
 
 .textoCarta p
 {
     text-align: left;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
 }
 
 
@@ -410,18 +380,6 @@ footer>p{
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-}
-
-.footer {
-  margin-top: 20px;
-  text-align: center;
-}
-
-.imagencentro img
-{
-  max-width: 100%; 
-  height: auto; 
-  margin-bottom: 10px;
 }
 
 .imagenAnimal
@@ -720,4 +678,12 @@ footer>p{
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
+}
+
+.cardContainer .card
+{
+    margin-bottom: 40px;
+    border: 2px solid rgba(8, 142, 13, 0.5);
+    background-color: rgba(190, 243, 192, 0.9);
+    border-radius: 1;
 }
