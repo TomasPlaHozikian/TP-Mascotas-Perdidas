@@ -1,7 +1,7 @@
 {% block content %}
 
-<div class="Titulo_animal">
-    <h1>Mascotas perdidas</h1>
+<div class="bienvenida">
+        <h1>Mascotas perdidas</h1>
 </div>
 
 <br>
@@ -10,18 +10,21 @@
     {% for animal in data %}
         <div class="card" id="1">
             <img class="imagenAnimal" src="{{ animal['foto'] }}">
-
-            <div class="textoCarta">
-                <h2><strong>Nombre de la mascota:</strong> {{animal['nombre']}}</h2>
-                <p>Dueño: <a href="/perfilajeno?id={{ animal['creado_por'] }}">{% for user in data2 %} {% if user['id']==animal['creado_por'] %} {{ user['nombre'] }} {% endif %} {% endfor %}</a></p>
-                <p>Se perdió en los alrededores de: {{ animal['localidad'] }}</p>
-                <p>Especie: {{ animal['especie'] }}</p>
-                <p>Raza: {{ animal['raza'] }}</p>
+            <div class="card">
+                <div class="textoCarta">
+                    <h2><strong>Nombre de la mascota:</strong> {{animal['nombre']}}</h2>
+                    <p>Dueño: <a href="/perfilajeno?id={{ animal['creado_por'] }}">{% for user in data2 %} {% if user['id']==animal['creado_por'] %} {{ user['nombre'] }} {% endif %} {% endfor %}</a></p>
+                    <p>Se perdió en los alrededores de: {{ animal['localidad'] }}</p>
+                    <p>Especie: {{ animal['especie'] }}</p>
+                    <p>Raza: {{ animal['raza'] }}</p>
+                </div>
             </div>
-            <div class="mapouter">
-                <div class="gmap_canvas">
-                    <iframe width="400" height="300" id="gmap_canvas" src="https://maps.google.com/maps?q={{ animal['provincia'] | urlencode }}+{{ animal['municipio'] | urlencode }}+{{ animal['localidad'] | urlencode }}+{{ animal['calle'] | urlencode }}+{{ animal['numero'] | urlencode }}&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+            <div class="card">
+                <div class="mapouter">
+                    <div class="gmap_canvas">
+                        <iframe width="400" height="300" id="gmap_canvas" src="https://maps.google.com/maps?q={{ animal['provincia'] | urlencode }}+{{ animal['municipio'] | urlencode }}+{{ animal['localidad'] | urlencode }}+{{ animal['calle'] | urlencode }}+{{ animal['numero'] | urlencode }}&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
 
+                    </div>
                 </div>
             </div>
         </div>

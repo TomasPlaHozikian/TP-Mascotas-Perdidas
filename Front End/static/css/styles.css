@@ -96,6 +96,13 @@ header{
     overflow-wrap: break-word;
 }
 
+.textoCarta a
+{
+    text-align: left;
+    overflow-wrap: break-word;
+    color: #4CAF50;
+}
+
 
 footer{
   position: sticky;
@@ -147,6 +154,8 @@ footer hr{
 footer>p{
   opacity: 0.5;
 }
+
+/*Bienvenida*/
 
 .bienvenida
 {
@@ -222,25 +231,6 @@ footer>p{
 .form_iniciar_sesion div input:not([type="file"]) {
     margin: 8px;
     width: 80%; 
-}
-
-.form_iniciar_sesion .subir_imagen {
-    margin: 8px;
-}
-
-.elegir_archivo {
-    display: none; 
-}
-
-.subir_archivo {
-    padding: 8px;
-    background-color: lightgreen;
-    border: 0;
-    border-radius: 8px;
-    width: 75%; 
-    cursor: pointer;
-    text-align: center;
-    color: rgb(9, 8, 8);
 }
 
 .form_iniciar_sesion .boton {
@@ -340,6 +330,7 @@ footer>p{
     flex: 0 0 auto;
 
 }
+
 .perfil-ajeno {
     
     text-align:center;
@@ -372,7 +363,7 @@ footer>p{
 
 .perfil-ajeno p {
     font-size: 24px;
-    color: #666;
+    color: #fff;
     margin-bottom: 10px;
     text-align: right;
     display: inline;
