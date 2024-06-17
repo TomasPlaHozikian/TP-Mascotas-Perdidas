@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, redirect
 from sqlalchemy import create_engine, text
 from sqlalchemy.exc import SQLAlchemyError
 
@@ -305,7 +305,7 @@ def borrar_animal(id):
             cursor.execute(f"DELETE FROM animales WHERE id='{id}'")
             conn.commit()
             conn.close()
-            return jsonify({'message': 'Animal eliminado correctamente'}), 200
+            return redirect('https://frontanimalesperdidos.pythonanywhere.com/perfilpropio')
         except SQLAlchemyError as e:
             return str(e)
 
