@@ -254,7 +254,9 @@ def animales():
                 query += f" AND localidad='{localidad}'"
 
             cursor.execute(query)
-            result = cursor.fetchall()
+            rows = cursor.fetchall()
+            column_names = [desc[0] for desc in cursor.description]
+            result = [dict(zip(column_names, row)) for row in rows]
             conn.close()
             return jsonify(result)
         except SQLAlchemyError as e:
@@ -292,7 +294,6 @@ def borrar_animal(id):
             conn = set_connection()
             cursor = conn.cursor()
             # eliminar valores en la tabla
-            #cursor.execute(f"SELECT nombre FROM animales WHERE nombre='{nombre}'")
             cursor.execute(f"DELETE FROM animales WHERE id='{id}'")
             conn.commit()
             conn.close()
