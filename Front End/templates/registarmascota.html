@@ -4,38 +4,58 @@
 
 {% block content %}
 
-<div class="iniciar_sesion">
-    <div class="titulo_registro">Registre a su mascota perdida:</div>
-    <form action="/cargar_mascota" id="animalForm" class="form_iniciar_sesion" method='POST'>
-        <div>
-            <label for="fnombre">Nombre</label>
-            <input type="text" name="fname" id="fnombre" required>
+<div class="busquedaAnimal">
+    <div class="bienvenida">
+      <h1>Registre a su mascota perdida:</h1>
+    </div>
+    <form action="/cargar_mascota" id="animalForm" class="" method='POST'>
+        <div class="formContent">
+            <div class="inputBox">
+              <label for="fnombre">Nombre</label>
+              <input type="text" name="fname" id="fnombre" placeholder="Juan" required>
+            </div>
 
-            <label for="especie">Especie</label>
-            <input type="text" name="fespecie" id="especie" required>
+            <div class="inputBox">
+              <label for="especie">Especie</label>
+              <input type="text" name="fespecie" id="especie" placeholder="Perro" required>
+            </div>
 
-            <label for="raza">Raza</label>
-            <input type="text" name="fraza" id="raza" required>
+            <div class="inputBox">
+              <label for="raza">Raza</label>
+              <input type="text" name="fraza" id="raza" placeholder="Pastor Aleman" required>
+            </div>
 
-            <label for="provincia">Provincia</label>
-            <input type="text" name="fprovincia" id="provincia" required>
+            <div class="inputBox">
+              <label for="provincia">Provincia</label>
+              <input type="text" name="fprovincia" id="provincia" placeholder="Buenos Aires" required>
+            </div>
 
-            <label for="municipio">Municipio</label>
-            <input type="text" name="fmunicipio" id="municipio" required>
+            <div class="inputBox">
+              <label for="municipio">Municipio</label>
+              <input type="text" name="fmunicipio" id="municipio" placeholder="CABA" required>
+            </div>
 
-            <label for="localidad">Localidad</label>
-            <input type="text" name="flocalidad" id="localidad" required>
+            <div class="inputBox">
+              <label for="localidad">Localidad</label>
+              <input type="text" name="flocalidad" id="localidad" placeholder="CABA" required>
+            </div>
 
-            <label for="calle">Calle</label>
-            <input type="text" name="fcalle" id="calle" required>
+            <div class="inputBox">
+              <label for="calle">Calle</label>
+              <input type="text" name="fcalle" id="calle" placeholder="Av Independencia" required>
+            </div>
 
-            <label for="numero">Numero</label>
-            <input type="number" name="fnumero" id="numero" required>
+            <div class="inputBox">
+              <label for="numero">Numero</label>
+              <input type="number" name="fnumero" id="numero" placeholder="123" required>
+            </div>
 
-            <label for="image">Subir enlace de foto</label>
-            <input type="text" name="ffoto" id="foto" required>
+            <div class="inputBox">
+              <label for="image">Subir enlace de foto</label>
+              <input type="text" name="ffoto" id="foto" placeholder="https://..." required>
+            </div>
         </div>
-        <input class="boton" type="submit" value="Registrar">
+        <button type="submit">Registrar</button>
     </form>
 </div>
 

@@ -117,7 +117,7 @@ header{
 
 footer{
   position: sticky;
-  margin-top: 20%;
+  margin-top: 10%;
   background: #4CAF50;
   padding: 30px 50px;
   display: flex;
@@ -258,6 +258,76 @@ footer>p{
     margin-top: 16px;
     text-decoration: none;
     color: blue;
+}
+
+/* Buscar mascota / registrar animal */
+
+.busquedaAnimal{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    gap: 90px;
+}
+
+.busquedaAnimal .bienvenida{
+  font-size: 2.5rem;
+  width: 70%;
+  color: white;
+}
+
+.busquedaAnimal form{
+    background-color: #4CAF50;
+    display: flex;
+    width: 45%;
+    padding: 30px;
+    height: min-content;
+    border-radius: 15px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.formContent{
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+}
+
+.formContent .inputBox{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 5px;
+}
+
+.inputBox input{
+    background-color: white;
+    border: 0;
+    border-radius: 8px;
+    padding: 8px;
+}
+
+.inputBox input::placeholder{
+    opacity: 0.7;
+}
+
+.busquedaAnimal form button{
+  padding: 8px;
+  background-color: lightgreen;
+  border: 0;
+  border-radius: 8px;
+  width: 45%;
+  height: 45%;
+  cursor: pointer;
+}
+
+.busquedaAnimal form button:hover{
+  background-color: #0c4710a3;
 }
 
 
@@ -581,6 +651,10 @@ footer>p{
   background: rgba(167, 199, 168, 0.5);
 }
 
+.centro button:hover{
+  background: #68aa6ab7;
+}
+
 .centrosMap{
   border-radius: 5px;
   height: 100%;
@@ -701,9 +775,9 @@ footer>p{
 
 }
 
-.cardContainer, .bienvenida{
-    width: 100%; /* Cambia este valor según tus necesidades */
-    margin: 0 auto; /* Centra el elemento en la página */
+.bienvenida{
+    width: 90%;
+    margin: 0 auto; 
 }
 
 .cardContainer .mapa 

@@ -4,33 +4,44 @@
 
 {% block content %}
 
-<div class="iniciar_sesion">
-    <div class="titulo_buscar">
+<div class="busquedaAnimal">
+    <div class="bienvenida">
         <h1>Busque mascotas:</h1>
     </div>
-    <br>
-    <form action="/resultado" class="form_iniciar_sesion" method="POST">
-        <div>
-            <label for="nombre">Nombre</label>
-            <input type="text" name="fnombre" id="fnombre">
+    <form action="/resultado" class="" method="POST">
+        <div class="formContent">
+            <div class="inputBox">
+              <label for="nombre">Nombre</label>
+              <input type="text" name="fnombre" id="fnombre" placeholder="Juan">
+            </div>
 
-            <label for="especie">Especie</label>
-            <input type="text" name="fespecie" id="especie">
+            <div class="inputBox">
+              <label for="especie">Especie</label>
+              <input type="text" name="fespecie" id="especie" placeholder="Perro">
+            </div>
 
-            <label for="raza">Raza</label>
-            <input type="text" name="fraza" id="raza">
+            <div class="inputBox">
+              <label for="raza">Raza</label>
+              <input type="text" name="fraza" id="raza" placeholder="Chihuahua">
+            </div>
 
-            <label for="provincia">Provincia</label>
-            <input type="text" name="fprovincia" id="provincia">
+            <div class="inputBox">
+              <label for="provincia">Provincia</label>
+              <input type="text" name="fprovincia" id="provincia" placeholder="Buenos Aires">
+            </div>
 
-            <label for="municipio">Municipio</label>
-            <input type="text" name="fmunicipio" id="municipio">
+            <div class="inputBox">
+              <label for="municipio">Municipio</label>
+              <input type="text" name="fmunicipio" id="municipio" placeholder="CABA">
+            </div>
 
-            <label for="localidad">Localidad</label>
-            <input type="text" name="flocalidad" id="localidad">
+            <div class="inputBox">
+              <label for="localidad">Localidad</label>
+              <input type="text" name="flocalidad" id="localidad" placeholder="CABA">
+            </div>
 
         </div>
-        <input class="boton" type="submit" value="Buscar">
+        <button type="submit">Buscar</button>
     </form>
 </div>
 
