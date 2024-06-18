@@ -51,7 +51,7 @@ header{
 }
 
 .Button:hover{
-    background:#A5D6A7;
+    background:#0f5912;
 }
 
 .cardContainer{
@@ -81,6 +81,7 @@ header{
     margin: 10px;
     padding: 5px 20px 5px;
     flex-wrap: wrap;
+    margin-top: 35px;
 }
 
 
@@ -91,10 +92,10 @@ header{
     flex-direction: column;
     justify-content: center;
     gap: 5px;
-    margin-top: 45px;
+
 }
 .textoCarta h2{
-    font-size: 2rem;
+    font-size: 30px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -652,6 +653,11 @@ footer>p{
     cursor: pointer;
 }
 
+#eliminar:hover
+{
+    background-color: #22520b;
+}
+
 #logout{
     background-color:#6fc0a8;
     border: none;
@@ -663,6 +669,11 @@ footer>p{
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
+}
+
+#logout:hover
+{
+    background-color: #22520b;
 }
 
 .titulo
@@ -693,4 +704,9 @@ footer>p{
 .cardContainer, .bienvenida{
     width: 100%; /* Cambia este valor según tus necesidades */
     margin: 0 auto; /* Centra el elemento en la página */
+}
+
+.cardContainer .mapa 
+{
+    margin-top: 15px;
 }
