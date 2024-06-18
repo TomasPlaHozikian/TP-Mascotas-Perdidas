@@ -146,9 +146,9 @@ def cargar_animal():
     except SQLAlchemyError as e:
         return str(e)
 
-def verifNombre(lista_usuarios, nombre_a_buscar):
+def verifMail(lista_usuarios, mail_a_buscar):
     for usuario in lista_usuarios:
-        if usuario["nombre"].lower() == nombre_a_buscar.lower():
+        if usuario["mail"].lower() == mail_a_buscar.lower():
             return True
     return False
 
@@ -163,7 +163,6 @@ def cargar_usuario():
         mail = request.form.get('mail')
         numero = request.form.get('numero')
         contrasena = request.form.get('contrasena')
-        # insertar valores en la tabla
         if not all([nombre, apellido, mail, numero, contrasena]):
             return jsonify({"message": "Faltan datos", "id": 0}), 400
         cursor.execute('SELECT * FROM usuarios')
@@ -171,7 +170,7 @@ def cargar_usuario():
         column_names = [desc[0] for desc in cursor.description]
         result = [dict(zip(column_names, row)) for row in rows]
         # busca la lista de usuarios para ver si existe
-        if verifNombre(result,nombre) is False:
+        if verifMail(result,mail) is False:
             cursor.execute(f"INSERT INTO usuarios (nombre, apellido, mail, numero, contrasena) VALUES ('{nombre}', '{apellido}', '{mail}', '{numero}', '{contrasena}')")
             conn.commit()
             conn.close()
