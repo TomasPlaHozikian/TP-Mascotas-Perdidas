@@ -36,6 +36,8 @@ def resultado():
 def buscar():
     return render_template('buscaranimal.html', logged_in="user_info" in session)
 
+
+#Funcion que recibe data de los usuarios y verifica la contrasena y el nombre del usuario
 def verifUsuario(lista_usuarios, nombre_a_buscar, contrasena_a_buscar):
     for usuario in lista_usuarios:
         if (usuario["nombre"].lower() == nombre_a_buscar.lower()) and (usuario["contrasena"].lower() == contrasena_a_buscar.lower()):
@@ -46,6 +48,9 @@ def verifUsuario(lista_usuarios, nombre_a_buscar, contrasena_a_buscar):
 def iniciar_sesion():
     return render_template('iniciosesion.html', logged_in="user_info" in session, error="")
 
+
+#El endpoint del login, recibe un usuario y una contrasena, las verifica con una funcion declarada antes (linea 41)
+#y crea una sesion en caso de que matcheen, en caso de que no devuelve un mensaje
 @app.route('/login', methods=["POST"])
 def login():
     user = request.form.get("user")
@@ -60,6 +65,7 @@ def login():
 
     return render_template('iniciosesion.html', logged_in="user_info" in session, error="Usuario o contraseña incorrectos")
 
+#Metodo para hacer logout, termina la sesion
 @app.route('/logout', methods=["POST"])
 def logout():
     session.pop('user_info', None)
@@ -69,6 +75,8 @@ def logout():
 def registrar_usuario():
     return render_template('registrarusuario.html', logged_in="user_info" in session)
 
+#Endpoint para que el front end le mande la informacion de un usuario al back end, cuando recibe un id 1,
+#crea una sesion y redirecciona al usuario a su propio perfil
 @app.route('/mandar_usuario', methods=["POST"])
 def mandar_usuario():
         nombre = request.form.get("fname")
@@ -88,6 +96,8 @@ def mandar_usuario():
         else:
             return redirect(url_for('registrar_usuario'))
 
+#Endpoint que permite al usuario ver su perfil con sus datos
+#para esto utiliza el id de la sesion
 @app.route('/perfilpropio')
 def perfilpropio():
     id = session['user_info']['id']
@@ -124,7 +134,7 @@ def ver_centro():
     data = response.json()
     return render_template('mostrarcentro.html', data = data, logged_in="user_info" in session)
 
-
+#recibe data de un form, lo manda al back end para ser cargado
 @app.route('/cargar_mascota', methods=['GET', 'POST'])
 def cargar_mascota():
     if request.method == 'POST':
