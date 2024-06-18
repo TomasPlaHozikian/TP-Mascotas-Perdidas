@@ -371,10 +371,9 @@ footer>p{
     margin: 20px auto;
     padding: 20px;
     width: 500px;
-    border: 2px solid #22520b;
+    border: 2px solid #22520b87;
     border-radius: 10px;
     font-size: 24px;
-    margin-bottom: 50px;
     background-color: #4CAF50;
     margin-left: auto;
 }
@@ -392,7 +391,8 @@ footer>p{
 .perfil-ajeno h1
 {
     font-size: xx-large;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:#ffffff;
 }
 
 .perfil-ajeno p {
@@ -409,6 +409,11 @@ footer>p{
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+}
+
+.info-ajeno label
+{
+    color: #ffffff;
 }
 
 .footer {
