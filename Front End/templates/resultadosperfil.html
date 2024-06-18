@@ -3,20 +3,24 @@
     {% for animal in data %}
         <div class="card" id="1">
             <img class="imagenAnimal" src="{{ animal['foto'] }}">
-            <div class="textoCarta">
-                <h2>Nombre del animal: {{animal['nombre']}}</h2>
-                <p>Se perdió en los alrededores de: {{ animal['localidad'] }}</p>
-                <p>Especie: {{ animal['especie'] }}</p>
-                <p>Raza: {{ animal['raza'] }}</p>
-                <br>
-                <form action="https://apianimalesperdidos.pythonanywhere.com/borrar_animal/{{ animal['id'] | urlencode }}" method="post">
-                    <input type="hidden" name="_method" value="DELETE">
-                    <button type="submit" id="eliminar">Eliminar publicación</button>
-                </form>
+            <div class="card">
+                <div class="textoCarta">
+                    <h2>Nombre del animal: {{animal['nombre']}}</h2>
+                    <p>Se perdió en los alrededores de: {{ animal['localidad'] }}</p>
+                    <p>Especie: {{ animal['especie'] }}</p>
+                    <p>Raza: {{ animal['raza'] }}</p>
+                    <br>
+                    <form action="https://apianimalesperdidos.pythonanywhere.com/borrar_animal/{{ animal['id'] | urlencode }}" method="post">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit" id="eliminar">Eliminar publicación</button>
+                    </form>
+                </div>
             </div>
-            <div class="mapouter">
-                <div class="gmap_canvas">
-                    <iframe width="400" height="300" id="gmap_canvas" src="https://maps.google.com/maps?q={{ animal['provincia'] | urlencode }}+{{ animal['municipio'] | urlencode }}+{{ animal['localidad'] | urlencode }}+{{ animal['calle'] | urlencode }}+{{ animal['numero'] | urlencode }}&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+            <div class="card">
+                <div class="mapouter">
+                    <div class="gmap_canvas">
+                        <iframe width="400" height="300" id="gmap_canvas" src="https://maps.google.com/maps?q={{ animal['provincia'] | urlencode }}+{{ animal['municipio'] | urlencode }}+{{ animal['localidad'] | urlencode }}+{{ animal['calle'] | urlencode }}+{{ animal['numero'] | urlencode }}&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                    </div>
                 </div>
             </div>
         </div>
