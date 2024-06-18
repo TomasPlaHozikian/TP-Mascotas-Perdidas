@@ -10,7 +10,7 @@
                     <p>Especie: {{ animal['especie'] }}</p>
                     <p>Raza: {{ animal['raza'] }}</p>
                     <br>
-                    <form action="https://apianimalesperdidos.pythonanywhere.com/borrar_animal/{{ animal['id'] | urlencode }}" method="post">
+                    <form action="http://127.0.0.1:5000/borrar_animal/{{ animal['id'] | urlencode }}" method="post">
                         <input type="hidden" name="_method" value="DELETE">
                         <button type="submit" id="eliminar">Eliminar publicación</button>
                     </form>

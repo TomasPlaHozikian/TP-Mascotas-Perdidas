@@ -8,15 +8,15 @@ app.secret_key = "helloworld"
 
 @app.route('/')
 def home():
-    response = requests.get('https://apianimalesperdidos.pythonanywhere.com/animales')
-    response2 = requests.get('https://apianimalesperdidos.pythonanywhere.com/usuarios')
+    response = requests.get('http://127.0.0.1:5000/animales')
+    response2 = requests.get('http://127.0.0.1:5000/usuarios')
     data = response.json()
     data2 = response2.json()
     return render_template('home.html', data=data, data2=data2, logged_in="user_info" in session)
 
 @app.route('/resultado', methods=['GET', 'POST'])
 def resultado():
-    response2 = requests.get('https://apianimalesperdidos.pythonanywhere.com/usuarios')
+    response2 = requests.get('http://127.0.0.1:5000/usuarios')
     data2 = response2.json()
     params = {
             'nombre': request.form.get('fnombre'),
@@ -27,7 +27,7 @@ def resultado():
             'localidad': request.form.get('flocalidad')
         }
 
-    response = requests.get('https://apianimalesperdidos.pythonanywhere.com/animales', params=params)
+    response = requests.get('http://127.0.0.1:5000/animales', params=params)
     data = response.json()
     return render_template('resultado.html', data=data, logged_in="user_info" in session, data2=data2)
 
@@ -50,7 +50,7 @@ def iniciar_sesion():
 def login():
     user = request.form.get("user")
     password = request.form.get("password")
-    usuarios = requests.get('https://apianimalesperdidos.pythonanywhere.com/usuarios')
+    usuarios = requests.get('http://127.0.0.1:5000/usuarios')
 
     logged_in_user = verifUsuario(usuarios.json(), user, password)
     error=""
@@ -77,10 +77,10 @@ def mandar_usuario():
         telefono = request.form.get("phone")
         password = request.form.get("password")
         payload = {"nombre": nombre, "apellido": apellido, "mail": email, "numero": telefono, "contrasena": password }
-        NuevoUsuario = requests.post('https://apianimalesperdidos.pythonanywhere.com/usuarioscargar', data=payload)
+        NuevoUsuario = requests.post('http://127.0.0.1:5000/usuarioscargar', data=payload)
         NUJson = NuevoUsuario.json()
         if NUJson["id"] == 1:
-            usuarios = requests.get('https://apianimalesperdidos.pythonanywhere.com/usuarios')
+            usuarios = requests.get('http://127.0.0.1:5000/usuarios')
             logged_in_user = verifUsuario(usuarios.json(), nombre, password)
             if logged_in_user is not None:
                 session['user_info'] = logged_in_user
@@ -94,7 +94,7 @@ def perfilpropio():
     params = {
             'creado_por': id
         }
-    response = requests.get('https://apianimalesperdidos.pythonanywhere.com/animales', params=params)
+    response = requests.get('http://127.0.0.1:5000/animales', params=params)
     data = response.json()
     if "user_info" in session:
         nombre = session['user_info']['nombre'] + " " + session['user_info']['apellido']
@@ -106,7 +106,7 @@ def perfilpropio():
 @app.route('/perfilajeno')
 def perfilajeno():
     id = request.args.get('id')
-    response = requests.get(f'https://apianimalesperdidos.pythonanywhere.com/obtener_usuario_particular/{id}')
+    response = requests.get(f'http://127.0.0.1:5000/obtener_usuario_particular/{id}')
     data = response.json()
     if not data:
         data = "no encontrado"
@@ -120,7 +120,7 @@ def registrar_mascota():
       
 @app.route ('/vercentro')
 def ver_centro():
-    response = requests.get('https://apianimalesperdidos.pythonanywhere.com/refugios')
+    response = requests.get('http://127.0.0.1:5000/refugios')
     data = response.json()
     return render_template('mostrarcentro.html', data = data, logged_in="user_info" in session)
 
@@ -140,7 +140,7 @@ def cargar_mascota():
             'numero': request.form.get('fnumero'),
             'foto': request.form.get('ffoto')
         }
-        response = requests.post('https://apianimalesperdidos.pythonanywhere.com/animales', json=data)
+        response = requests.post('http://127.0.0.1:5000/animales', json=data)
         # Handle the response
     return render_template('registarmascota.html', logged_in="user_info" in session)
 

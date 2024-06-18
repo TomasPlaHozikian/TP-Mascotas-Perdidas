@@ -9,10 +9,10 @@ app = Flask(__name__)
 
 def set_connection():
     conn = mysql.connector.connect(
-        user='APIAnimalesperdi',
-        password='PruebadbIntro',
-        host='APIAnimalesperdidos.mysql.pythonanywhere-services.com',
-        database='APIAnimalesperdi$tp')
+        user='root',
+        password='test',
+        host='localhost',
+        database='tp')
     return conn
 
 
@@ -273,7 +273,7 @@ def borrar_animal(id):
             cursor.execute(f"DELETE FROM animales WHERE id='{id}'")
             conn.commit()
             conn.close()
-            return redirect('https://frontanimalesperdidos.pythonanywhere.com/perfilpropio')
+            return redirect('http://127.0.0.1:5001/perfilpropio')
         except SQLAlchemyError as e:
             return str(e)
 
